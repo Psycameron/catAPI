@@ -9,9 +9,9 @@ export default function Header() {
     <>
       <Link href="/">
         <Logo />
-        <h1>Hi! &#128075;</h1>
-        <p>Welcome to MacPaw Bootcamp 2023</p>
       </Link>
+      <h1>Hi! &#128075;</h1>
+      <p>Welcome to MacPaw Bootcamp 2023</p>
     </>
   );
 }
