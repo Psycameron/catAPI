@@ -1,5 +1,7 @@
 "use client";
 
+import LogsStory from "@/components/LogsStory/LogsStory";
+import ReactionsMenu from "@/components/ReactionsMenu/ReactionsMenu";
 import { getRandomCat } from "@/utils/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -23,6 +25,8 @@ export default function Voting() {
   return (
     <div>
       <Image src={catInfo.url} alt={"cat"} width={640} height={360} />
+      <ReactionsMenu />
+      <LogsStory />
     </div>
   );
 }
