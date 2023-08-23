@@ -5,12 +5,12 @@
 
 import AdditionalNav from "@/components/AdditionalNav/AdditionalNav";
 import BackBtn from "@/components/BackBtn/BackBtn";
-import Search from "@/components/Search/Search";
+import SearchForm from "@/components/SearchForm/SearchForm";
 
 export default function PagesLayout({ children }) {
   return (
     <section>
-      <Search />
+      <SearchForm />
       <AdditionalNav />
       <BackBtn />
       <h2>Page title</h2>
