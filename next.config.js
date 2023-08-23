@@ -27,6 +27,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ["cdn2.thecatapi.com"],
+  },
 };
 
 module.exports = nextConfig;

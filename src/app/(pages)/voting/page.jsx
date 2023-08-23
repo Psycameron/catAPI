@@ -1,3 +1,28 @@
+"use client";
+
+import { getRandomCat } from "@/utils/api";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
 export default function Voting() {
-  return <div>Voting Page</div>;
+  const [catInfo, setCatInfo] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getRandomCat();
+      setCatInfo(data);
+    }
+
+    fetchData();
+  }, []);
+
+  if (!catInfo) {
+    return;
+  }
+
+  return (
+    <div>
+      <Image src={catInfo.url} alt={"cat"} width={640} height={360} />
+    </div>
+  );
 }
