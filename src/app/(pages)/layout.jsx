@@ -4,6 +4,7 @@
 // };
 
 import AdditionalNav from "@/components/AdditionalNav/AdditionalNav";
+import BackBtn from "@/components/BackBtn/BackBtn";
 import Search from "@/components/Search/Search";
 
 export default function PagesLayout({ children }) {
@@ -11,6 +12,8 @@ export default function PagesLayout({ children }) {
     <section>
       <Search />
       <AdditionalNav />
+      <BackBtn />
+      <h2>Page title</h2>
       {children}
     </section>
   );
