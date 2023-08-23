@@ -1,4 +1,13 @@
 /* :root {
+  --primary: #ff868e;
+  --primary-muted: #fbe0dc;
+  --primary-transparent: rgba(255, 134, 142, 0.6);
+
+  --text-main-color: #1d1d1d;
+  --text-secondary-color: #8c8c8c;
+} */
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
