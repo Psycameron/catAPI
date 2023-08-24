@@ -9,9 +9,9 @@ import GridPattern from "@/components/GridPattern/GridPattern";
 
 export default function Breeds() {
   const [cats, setCats] = useState(null);
-  console.log(`🚀 ~ Breeds ~ cats:`, cats);
+  // console.log(`🚀 ~ Breeds ~ cats:`, cats);
   const [breeds, setBreeds] = useState(null);
-  console.log(`🚀 ~ Breeds ~ breeds:`, breeds);
+  // console.log(`🚀 ~ Breeds ~ breeds:`, breeds);
   const [selectedLimit, setSelectedLimit] = useState(10);
   const [selectedBreedId, setSelectedBreedId] = useState("default");
 

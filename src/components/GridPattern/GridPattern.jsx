@@ -2,7 +2,12 @@ import Image from "next/image";
 import styles from "./GridPattern.module.css";
 
 export default function GridPattern({ cats }) {
-  console.log(`🚀 ~ GridPattern ~ cats:`, cats);
+  // console.log(`🚀 ~ GridPattern ~ cats:`, cats);
+
+  if (!cats) {
+    return;
+  }
+
   return (
     <div className={styles.parent}>
       {cats.map(({ url, id, breeds }) => {
