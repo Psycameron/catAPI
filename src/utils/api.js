@@ -23,9 +23,11 @@ export async function getAllBreeds() {
   }
 }
 
-export async function getBreedById(id, limit) {
+export async function getCatsByBreed(id, limit) {
   try {
-    const response = await axios.get(`/breeds?api_key=${API_KEY}`);
+    const response = await axios.get(
+      `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching breeds:", error);

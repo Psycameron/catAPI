@@ -19,7 +19,7 @@ export default function BreedsFilter({
         <option value="default">All breeds</option>
         {breeds.map(({ id, name }) => {
           return (
-            <option key={id} value={name}>
+            <option key={id} value={id}>
               {name}
             </option>
           );

@@ -2,24 +2,36 @@
 
 import { useEffect, useState } from "react";
 
-import { getAllBreeds } from "@/utils/api";
+import { getAllBreeds, getCatsByBreed } from "@/utils/api";
 
 import BreedsFilter from "@/components/BreedsFilter/BreedsFilter";
 import GridPattern from "@/components/GridPattern/GridPattern";
 
 export default function Breeds() {
+  const [cats, setCats] = useState(null);
+  console.log(`🚀 ~ Breeds ~ cats:`, cats);
   const [breeds, setBreeds] = useState(null);
-  const [selectedLimit, setSelectedLimit] = useState("10");
-  const [selectedBreed, setSelectedBreed] = useState("default");
+  console.log(`🚀 ~ Breeds ~ breeds:`, breeds);
+  const [selectedLimit, setSelectedLimit] = useState(10);
+  const [selectedBreedId, setSelectedBreedId] = useState("default");
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchDataBreeds() {
       const data = await getAllBreeds();
       setBreeds(data);
     }
 
-    fetchData();
+    fetchDataBreeds();
   }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getCatsByBreed(selectedBreedId, selectedLimit);
+      setCats(data);
+    }
+
+    fetchData();
+  }, [selectedBreedId, selectedLimit]);
 
   if (!breeds) {
     return;
@@ -27,7 +39,7 @@ export default function Breeds() {
 
   function handleSelectChange(e) {
     if (e.target.name === "breeds") {
-      setSelectedBreed(e.target.value);
+      setSelectedBreedId(e.target.value);
     }
     if (e.target.name === "limits") {
       setSelectedLimit(e.target.value);
@@ -40,10 +52,10 @@ export default function Breeds() {
       <BreedsFilter
         breeds={breeds}
         selectedLimit={selectedLimit}
-        selectedBreed={selectedBreed}
+        selectedBreedId={selectedBreedId}
         handleSelectChange={handleSelectChange}
       />
-      <GridPattern />
+      <GridPattern cats={cats} />
     </>
   );
 }
