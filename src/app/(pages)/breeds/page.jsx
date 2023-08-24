@@ -14,6 +14,7 @@ export default function Breeds() {
   // console.log(`🚀 ~ Breeds ~ breeds:`, breeds);
   const [selectedLimit, setSelectedLimit] = useState(10);
   const [selectedBreedId, setSelectedBreedId] = useState("default");
+  console.log(`🚀 ~ Breeds ~ selectedBreedId:`, selectedBreedId);
 
   useEffect(() => {
     async function fetchDataBreeds() {
@@ -55,7 +56,7 @@ export default function Breeds() {
         selectedBreedId={selectedBreedId}
         handleSelectChange={handleSelectChange}
       />
-      <GridPattern cats={cats} />
+      <GridPattern cats={cats} selectedBreedId={selectedBreedId} />
     </>
   );
 }

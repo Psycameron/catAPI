@@ -23,11 +23,20 @@ export async function getAllBreeds() {
   }
 }
 
-export async function getCatsByBreed(id, limit) {
+export async function getCatsByBreed(id, limit = 5) {
   try {
     const response = await axios.get(
       `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}`
     );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching breeds:", error);
+  }
+}
+
+export async function getCatInfoByBreed(id) {
+  try {
+    const response = await axios.get(`/breeds/${id}?api_key=${API_KEY}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching breeds:", error);
