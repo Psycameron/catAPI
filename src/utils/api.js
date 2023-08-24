@@ -22,3 +22,12 @@ export async function getAllBreeds() {
     console.error("Error fetching breeds:", error);
   }
 }
+
+export async function getBreedById(id, limit) {
+  try {
+    const response = await axios.get(`/breeds?api_key=${API_KEY}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching breeds:", error);
+  }
+}

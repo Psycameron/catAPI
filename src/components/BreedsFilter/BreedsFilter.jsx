@@ -1,21 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
+const LIMITS_VALUE = [5, 10, 15, 20];
 
-export default function BreedsFilter({ breeds }) {
-  const [selectedLimit, setSelectedLimit] = useState("option2");
-  const [selectedBreed, setSelectedBreed] = useState("default");
-
-  function handleSelectChange(e) {
-    if (e.target.name === "breeds") {
-      setSelectedBreed(e.target.value);
-    }
-    if (e.target.name === "limits") {
-      setSelectedLimit(e.target.value);
-    }
-  }
-
+export default function BreedsFilter({
+  breeds,
+  selectedLimit,
+  selectedBreed,
+  handleSelectChange,
+}) {
   return (
     <>
       <select
@@ -34,10 +26,13 @@ export default function BreedsFilter({ breeds }) {
         })}
       </select>
       <select name="limits" value={selectedLimit} onChange={handleSelectChange}>
-        <option value="option1">Limit: 5</option>
-        <option value="option2">Limit: 10</option>
-        <option value="option3">Limit: 15</option>
-        <option value="option4">Limit: 20</option>
+        {LIMITS_VALUE.map((value) => {
+          return (
+            <option key={value} value={value}>
+              Limits: {value}
+            </option>
+          );
+        })}
       </select>
     </>
   );
