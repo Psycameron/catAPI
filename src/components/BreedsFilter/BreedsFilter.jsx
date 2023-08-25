@@ -5,7 +5,7 @@ const LIMITS_VALUE = [5, 10, 15, 20];
 export default function BreedsFilter({
   breeds,
   selectedLimit,
-  selectedBreed,
+  selectedBreedId,
   handleSelectChange,
 }) {
   return (
@@ -13,7 +13,7 @@ export default function BreedsFilter({
       <select
         name="breeds"
         id=""
-        value={selectedBreed}
+        value={selectedBreedId}
         onChange={handleSelectChange}
       >
         <option value="default">All breeds</option>

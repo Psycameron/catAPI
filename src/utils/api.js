@@ -14,6 +14,17 @@ export async function getRandomCat() {
   }
 }
 
+export async function getCatsForGallery(order, type, breedId, limit) {
+  try {
+    const response = await axios.get(
+      `/images/search?api_key=${API_KEY}&order=${order}&mime_types=${type}&breed_ids=${breedId}&limit=${limit}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching cat image:", error);
+  }
+}
+
 export async function getAllBreeds() {
   try {
     const response = await axios.get(`/breeds?api_key=${API_KEY}`);
