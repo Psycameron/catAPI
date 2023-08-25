@@ -1,8 +1,10 @@
 "use client";
 
-import { getCatInfoByBreed, getCatsByBreed } from "@/utils/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { getCatInfoByBreed, getCatsByBreed } from "@/utils/api";
+
+const LIMIT_SLIDER_IMAGES = 5;
 
 export default function PetInfo({ params: { id } }) {
   const [breedInfo, setBreedInfo] = useState(null);
@@ -15,7 +17,7 @@ export default function PetInfo({ params: { id } }) {
     }
 
     async function fetchDataImages() {
-      const data = await getCatsByBreed(id);
+      const data = await getCatsByBreed(id, LIMIT_SLIDER_IMAGES);
       const dataImages = data.map(({ id, url }) => ({
         id,
         url,

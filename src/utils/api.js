@@ -23,7 +23,7 @@ export async function getAllBreeds() {
   }
 }
 
-export async function getCatsByBreed(id, limit = 5) {
+export async function getCatsByBreed(id, limit) {
   try {
     const response = await axios.get(
       `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}`
