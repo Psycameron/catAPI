@@ -59,7 +59,7 @@ export async function getCatInfoByBreed(id) {
   }
 }
 
-export async function addImageToLikes(data) {
+export async function addImageReaction(data) {
   try {
     const response = await axios.post(`/votes`, data, { headers });
     console.log(response.data);
