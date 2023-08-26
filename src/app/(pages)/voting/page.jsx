@@ -16,6 +16,8 @@ export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
   const [favouritesIds, setFavouritesIds] = useState([]);
 
+  const [logs, setLogs] = useState([]);
+
   useEffect(() => {
     async function fetchCat() {
       const data = await getRandomCat();
@@ -30,17 +32,17 @@ export default function Voting() {
     return;
   }
 
+  async function loadNewCatImage() {
+    const newCatInfo = await getRandomCat();
+    setCatInfo(newCatInfo);
+  }
+
   async function handleReaction(id, value) {
     const data = { image_id: id, value };
 
     await addImageReaction(data);
 
     loadNewCatImage();
-  }
-
-  async function loadNewCatImage() {
-    const newCatInfo = await getRandomCat();
-    setCatInfo(newCatInfo);
   }
 
   async function fetchFavourites() {
@@ -59,10 +61,29 @@ export default function Voting() {
   }
 
   async function deleteFromFavourites(id) {
-    console.log(id);
-
     await deleteImageFromFavourites(id);
+
     fetchFavourites();
+  }
+
+  function addLog(id, message) {
+    const log = {
+      date: formatTime(new Date()),
+      id,
+      action: message,
+    };
+
+    setLogs((prevLogs) => [...prevLogs, log]);
+  }
+
+  function formatTime(date) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+
+    const formattedHours = hours < 10 ? `0${hours}` : hours;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+    return `${formattedHours}:${formattedMinutes}`;
   }
 
   return (
@@ -74,8 +95,9 @@ export default function Voting() {
         handleReaction={handleReaction}
         addToFavourites={addToFavourites}
         deleteFromFavourites={deleteFromFavourites}
+        addLog={addLog}
       />
-      <LogsStory />
+      <LogsStory logs={logs} />
     </div>
   );
 }

@@ -9,6 +9,7 @@ export default function ReactionsMenu({
   handleReaction,
   addToFavourites,
   deleteFromFavourites,
+  addLog,
 }) {
   // console.log(`🚀 ~ ReactionsMenu ~ catInfo:`, catInfo);
 
@@ -16,7 +17,11 @@ export default function ReactionsMenu({
     <div>
       <button
         type="button"
-        onClick={() => handleReaction(catInfo.id, VALUE_FOR_LIKES)}
+        name="Likes"
+        onClick={(e) => {
+          handleReaction(catInfo.id, VALUE_FOR_LIKES, e.target.name);
+          addLog(catInfo.id, `was added to ${e.target.name}`);
+        }}
       >
         Likes
       </button>
@@ -25,10 +30,15 @@ export default function ReactionsMenu({
         favouritesIds={favouritesIds}
         addToFavourites={addToFavourites}
         deleteFromFavourites={deleteFromFavourites}
+        addLog={addLog}
       />
       <button
         type="button"
-        onClick={() => handleReaction(catInfo.id, VALUE_FOR_DISLIKES)}
+        name="Dislikes"
+        onClick={(e) => {
+          handleReaction(catInfo.id, VALUE_FOR_DISLIKES, e.target.name);
+          addLog(catInfo.id, `was added to ${e.target.name}`);
+        }}
       >
         Dislikes
       </button>
