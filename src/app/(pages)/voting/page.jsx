@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
   const [favouritesIds, setFavouritesIds] = useState([]);
-
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
@@ -55,7 +54,7 @@ export default function Voting() {
     const data = { image_id: id };
 
     const res = await addImageToFavourites(data);
-    favouritesIds.push(res.id);
+    setFavouritesIds((prevFavouritesIds) => [...prevFavouritesIds, res.id]);
 
     fetchFavourites();
   }
