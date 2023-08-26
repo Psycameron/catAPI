@@ -5,6 +5,11 @@ const API_KEY =
 
 axios.defaults.baseURL = "https://api.thecatapi.com/v1";
 
+const headers = {
+  "Content-Type": "application/json",
+  "x-api-key": API_KEY,
+};
+
 export async function getRandomCat() {
   try {
     const response = await axios.get(`/images/search?api_key=${API_KEY}`);
@@ -21,7 +26,7 @@ export async function getCatsForGallery(order, type, breedId, limit) {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching cat image:", error);
+    console.error("Error fetching cat images:", error);
   }
 }
 
@@ -51,5 +56,14 @@ export async function getCatInfoByBreed(id) {
     return response.data;
   } catch (error) {
     console.error("Error fetching breeds:", error);
+  }
+}
+
+export async function addImageToLikes(data) {
+  try {
+    const response = await axios.post(`/votes`, data, { headers });
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
   }
 }

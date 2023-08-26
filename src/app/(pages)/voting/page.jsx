@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
+  // console.log(`🚀 ~ Voting ~ catInfo:`, catInfo);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,7 +26,7 @@ export default function Voting() {
   return (
     <div>
       <Image src={catInfo.url} alt={"cat"} width={640} height={360} />
-      <ReactionsMenu />
+      <ReactionsMenu catInfo={catInfo} />
       <LogsStory />
     </div>
   );
