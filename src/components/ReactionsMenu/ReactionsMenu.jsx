@@ -1,16 +1,8 @@
-import { addImageReaction } from "@/utils/api";
-
 const VALUE_FOR_LIKES = 1;
 const VALUE_FOR_DISLIKES = -1;
 
-export default function ReactionsMenu({ catInfo }) {
+export default function ReactionsMenu({ catInfo, handleReaction }) {
   console.log(`🚀 ~ ReactionsMenu ~ catInfo:`, catInfo);
-
-  async function handleReaction(id, value) {
-    const data = { image_id: id, value };
-
-    await addImageReaction(data);
-  }
 
   return (
     <div>
