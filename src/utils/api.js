@@ -70,7 +70,6 @@ export async function addImageReaction(data) {
 export async function getFavourites() {
   try {
     const response = await axios.get(`/favourites?api_key=${API_KEY}`);
-    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Error fetching breeds:", error);
@@ -80,7 +79,6 @@ export async function getFavourites() {
 export async function addImageToFavourites(data) {
   try {
     const response = await axios.post(`/favourites`, data, { headers });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -89,7 +87,6 @@ export async function addImageToFavourites(data) {
 
 export async function deleteImageFromFavourites(id) {
   try {
-    console.log(`🚀 ~ deleteImageFromFavourites ~ id:`, id);
     await axios.delete(`/favourites/${id}`, { headers });
   } catch (error) {
     console.error(error);

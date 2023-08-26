@@ -14,9 +14,7 @@ import { useEffect, useState } from "react";
 
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
-  // console.log(`🚀 ~ Voting ~ catInfo:`, catInfo);
   const [favouritesIds, setFavouritesIds] = useState([]);
-  console.log(`🚀 ~ Voting ~ favouritesIds:`, favouritesIds);
 
   useEffect(() => {
     async function fetchCat() {
@@ -47,17 +45,14 @@ export default function Voting() {
 
   async function fetchFavourites() {
     const data = await getFavourites();
-    // console.log(`🚀 ~ fetchFavourites ~ data:`, data);
 
     setFavouritesIds(data);
   }
 
   async function addToFavourites(id) {
-    // console.log(id);
     const data = { image_id: id };
 
     const res = await addImageToFavourites(data);
-    console.log(`🚀 ~ addToFavourites ~ res:`, res);
     favouritesIds.push(res.id);
 
     fetchFavourites();

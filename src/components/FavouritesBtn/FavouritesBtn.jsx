@@ -4,14 +4,11 @@ export default function FavouritesBtn({
   addToFavourites,
   deleteFromFavourites,
 }) {
-  console.log(`🚀 ~ catInfo:`, catInfo);
   const isFavourites = favouritesIds
     .map((el) => el.image_id)
     .includes(catInfo.id);
-  console.log(`🚀 ~ isFavourites:`, isFavourites);
 
   const catForDel = favouritesIds.filter((el) => el.image_id === catInfo.id);
-  console.log(`🚀 ~ catForDel:`, catForDel);
 
   return (
     <button
