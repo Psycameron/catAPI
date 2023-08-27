@@ -1,11 +1,11 @@
-/* :root {
+:root {
   --primary: #ff868e;
   --primary-muted: #fbe0dc;
   --primary-transparent: rgba(255, 134, 142, 0.6);
 
   --text-main-color: #1d1d1d;
   --text-secondary-color: #8c8c8c;
-} */
+}
 
 /* :root {
   --max-width: 1100px;
@@ -88,12 +88,43 @@
   margin: 0;
 }
 
-html,
 body {
-  max-width: 100vw;
+  display: flex;
+  position: relative;
+  /* max-width: 100vw;
   overflow-x: hidden;
 
-  display: flex;
+  display: flex; */
+
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 147px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+header {
+  position: sticky;
+  top: 30px;
+  left: 0;
+
+  height: calc(100vh - 30px);
 }
 
 /* body {

@@ -1,0 +1,33 @@
+.descr {
+  margin-bottom: 20px;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  margin: auto;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 138px;
+  height: 198px;
+}
+
+.img {
+}
+
+.span {
+  padding: 10px 0;
+}

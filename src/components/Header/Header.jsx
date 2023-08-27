@@ -4,14 +4,16 @@ import Link from "next/link";
 
 import Logo from "public/Logo.svg";
 
+import styles from "./Header.module.css";
+
 export default function Header() {
   return (
     <>
       <Link href="/">
-        <Logo />
+        <Logo className={styles.logo} />
       </Link>
-      <h1>Hi! &#128075;</h1>
-      <p>Welcome to MacPaw Bootcamp 2023</p>
+      <h1 className={styles.title}>Hi! &#128075;</h1>
+      <p className={styles.descr}>Welcome to MacPaw Bootcamp 2023</p>
     </>
   );
 }
