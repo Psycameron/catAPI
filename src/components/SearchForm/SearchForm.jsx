@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./SearchForm.module.css";
 import SearchIcon from "public/images/svg/search.svg";
 
@@ -11,9 +12,11 @@ export default function SearchForm() {
         type="text"
         placeholder="Search for breeds by name"
       />
-      <button className={styles.button} type="submit">
-        <SearchIcon className={styles.icon} />
-      </button>
+      <Link href="/search">
+        <button className={styles.button} type="submit">
+          <SearchIcon className={styles.icon} />
+        </button>
+      </Link>
     </div>
   );
 }
