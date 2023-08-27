@@ -72,7 +72,7 @@ export default function Voting() {
       action: message,
     };
 
-    setLogs((prevLogs) => [...prevLogs, log]);
+    setLogs((prevLogs) => [log, ...prevLogs]);
   }
 
   function formatTime(date) {
