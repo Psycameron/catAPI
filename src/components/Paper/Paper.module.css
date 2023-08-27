@@ -1,0 +1,12 @@
+.container {
+  padding: 20px;
+  width: 680px;
+  min-height: calc(100vh - 60px);
+
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-large);
+}
+
+.customBackground {
+  background-color: var(--primary-muted);
+}
