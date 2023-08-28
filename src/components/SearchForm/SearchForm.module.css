@@ -10,7 +10,7 @@
   width: 470px;
   height: 60px;
 
-  color: var(--text-secondary-color);
+  color: var(--text-main-color);
   border-radius: var(--border-radius-large);
   background-color: var(--white-color);
 }
