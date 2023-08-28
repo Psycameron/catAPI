@@ -26,15 +26,12 @@
 
   border-radius: var(--border-radius-large);
   border: 4px solid var(--white-transparent);
+
+  transition: border 250ms var(--timing-function);
 }
 
 .wrapper.active {
   border: 4px solid var(--primary-muted);
-}
-
-.wrapper:hover,
-.wrapper.active:hover {
-  border: 4px solid var(--white-color);
 }
 
 .voting {
@@ -61,6 +58,9 @@
   color: var(--primary);
   background-color: var(--white-color);
   border-radius: var(--border-radius-small);
+
+  transition: color 250ms var(--timing-function),
+    background-color 250ms var(--timing-function);
 }
 
 .p.active {
@@ -68,8 +68,13 @@
   background-color: var(--primary);
 }
 
-.p:hover,
-.p.active:hover {
+.link:hover .p,
+.link.active:hover .p {
   color: var(--primary);
   background-color: var(--primary-muted);
+}
+
+.link:hover .wrapper,
+.link.active:hover .wrapper {
+  border: 4px solid var(--white-color);
 }
