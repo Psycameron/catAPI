@@ -13,7 +13,13 @@ export default function GridPattern({ cats, selectedBreedId }) {
         return (
           <li className={styles.item} key={id}>
             <Link href={`/breeds/${selectedBreedId}`}>
-              <Image src={url} alt={breeds[0].name} width={320} height={320} />
+              <Image
+                className={styles.image}
+                src={url}
+                alt={breeds[0].name}
+                width={310}
+                height={310}
+              />
             </Link>
           </li>
         );
@@ -21,6 +27,3 @@ export default function GridPattern({ cats, selectedBreedId }) {
     </ul>
   );
 }
-
-// ну тут тогда по идее можешь вместо styles.item1 писать styles.${index}
-// при мапе ж, и будут рендериться так же но ток сколько нужно
