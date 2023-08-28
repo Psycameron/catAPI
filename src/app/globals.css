@@ -90,7 +90,7 @@ a {
   text-decoration: none;
 }
 
-input {
+input, select {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;

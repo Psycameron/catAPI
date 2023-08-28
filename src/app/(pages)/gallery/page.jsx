@@ -65,7 +65,6 @@ export default function Gallery() {
 
   return (
     <>
-      <div>Gallery Page</div>
       <GalleryForm
         breeds={breeds}
         handleSelectChange={handleSelectChange}

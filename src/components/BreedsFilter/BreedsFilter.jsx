@@ -1,5 +1,9 @@
 "use client";
 
+import styles from "./BreedsFilter.module.css";
+import Sort from "public/images/svg/sort.svg";
+import SortRevert from "public/images/svg/sort-revert.svg";
+
 const LIMITS_VALUE = [5, 10, 15, 20];
 
 export default function BreedsFilter({
@@ -9,8 +13,9 @@ export default function BreedsFilter({
   handleSelectChange,
 }) {
   return (
-    <>
+    <form className={styles.form}>
       <select
+        className={`${styles.select} ${styles.breeds}`}
         name="breeds"
         id=""
         value={selectedBreedId}
@@ -19,21 +24,32 @@ export default function BreedsFilter({
         <option value="default">All breeds</option>
         {breeds.map(({ id, name }) => {
           return (
-            <option key={id} value={id}>
+            <option className={styles.option} key={id} value={id}>
               {name}
             </option>
           );
         })}
       </select>
-      <select name="limits" value={selectedLimit} onChange={handleSelectChange}>
+      <select
+        className={styles.select}
+        name="limits"
+        value={selectedLimit}
+        onChange={handleSelectChange}
+      >
         {LIMITS_VALUE.map((value) => {
           return (
-            <option key={value} value={value}>
+            <option className={styles.option} key={value} value={value}>
               Limits: {value}
             </option>
           );
         })}
       </select>
-    </>
+      <button className={styles.button} type="button">
+        <Sort className={styles.icon} />
+      </button>
+      <button className={styles.button} type="button">
+        <SortRevert className={styles.icon} />
+      </button>
+    </form>
   );
 }
