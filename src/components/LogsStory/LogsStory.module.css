@@ -1,0 +1,32 @@
+.list {
+}
+
+.item {
+  padding: 15px 20px 15px;
+
+  border-radius: var(--border-radius-small);
+  background-color: var(--background-color);
+}
+
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.date {
+  padding: 3px 10px;
+  margin-right: 30px;
+
+  font-size: var(--font-size-medium);
+  border-radius: var(--border-radius-extra-small);
+  background-color: var(--white-color);
+}
+
+.action {
+  font-size: var(--font-size-medium);
+  color: var(--text-secondary-color);
+}
+
+.id {
+  font-size: var(--font-size-main);
+  color: var(--text-main-color);
+}
