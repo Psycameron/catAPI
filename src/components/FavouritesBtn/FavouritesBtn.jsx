@@ -1,3 +1,7 @@
+import styles from "./FavouritesBtn.module.css";
+import Fav from "public/images/svg/fav.svg";
+import Unfav from "public/images/svg/unfav.svg";
+
 export default function FavouritesBtn({
   catInfo,
   favouritesIds,
@@ -13,6 +17,7 @@ export default function FavouritesBtn({
 
   return (
     <button
+      className={`${styles.button} {${isFavourites} ? ${styles.active} : ""}`}
       type="button"
       name="Favourites"
       onClick={
@@ -27,7 +32,11 @@ export default function FavouritesBtn({
             }
       }
     >
-      {isFavourites ? "Unfav" : "Fav"}
+      {!isFavourites ? (
+        <Fav className={styles.favIcon} />
+      ) : (
+        <Unfav className={styles.unfavIcon} />
+      )}
     </button>
   );
 }

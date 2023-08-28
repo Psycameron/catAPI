@@ -8,9 +8,9 @@
   --text-secondary-color: #8c8c8c;
 
   --likes-color: #97eab9;
-  --likes-color-transparent: rgba(151, 234, 185, 0.3);
+  --likes-color-transparent: rgba(151, 234, 185, 0.6);
   --dislikes-color: #ffd280;
-  --dislikes-color-transparent: rgba(255, 134, 142, 0.3);
+  --dislikes-color-transparent: rgb(255, 210, 128, 0.6);
 
   /* Background colors */
   --background-color: #f8f8f7;

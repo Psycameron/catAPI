@@ -1,0 +1,59 @@
+.wrapper {
+  position: absolute;
+  top: 398px;
+  left: 216px;
+
+  display: flex;
+
+  border-radius: var(--border-radius-large);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 80px;
+  height: 80px;
+
+  border: 4px solid var(--white-color);
+
+  transition: background-color 250ms var(--timing-function);
+}
+
+.like {
+  background-color: var(--likes-color);
+  border-right: 2px solid var(--white-color);
+
+  border-top-left-radius: var(--border-radius-large);
+  border-bottom-left-radius: var(--border-radius-large);
+}
+
+.dislike {
+  background-color: var(--dislikes-color);
+  border-left: 2px solid var(--white-color);
+
+  border-top-right-radius: var(--border-radius-large);
+  border-bottom-right-radius: var(--border-radius-large);
+}
+
+.icon {
+  fill: var(--white-color);
+  transition: fill 250ms var(--timing-function);
+}
+
+.button:hover.like {
+  background-color: var(--likes-color-transparent);
+}
+
+.button:hover.like .icon {
+  fill: var(--likes-color);
+}
+
+.button:hover.dislike {
+  background-color: var(--dislikes-color-transparent);
+}
+
+.button:hover.dislike .icon {
+  fill: var(--dislikes-color);
+}
