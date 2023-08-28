@@ -1,3 +1,6 @@
+import styles from "./GalleryForm.module.css";
+import Update from "public/images/svg/update.svg";
+
 const ORDER_VALUE = ["Random", "Desc", "Asc"];
 const TYPE_VALUE = [
   ["gif,png,jpeg", "All"],
@@ -17,12 +20,15 @@ export default function GalleryForm({
 }) {
   return (
     <div>
-      <form action="" onSubmit={onSubmit}>
-        <label htmlFor="">
-          ORDER
+      <form className={styles.form} onSubmit={onSubmit}>
+        <div className={styles.wrapper}>
+          <label className={styles.label} htmlFor="order">
+            ORDER
+          </label>
           <select
+            className={styles.select}
             name="order"
-            id=""
+            id="order"
             value={selectedOrder}
             onChange={handleSelectChange}
           >
@@ -34,12 +40,15 @@ export default function GalleryForm({
               );
             })}
           </select>
-        </label>
-        <label htmlFor="">
-          TYPE
+        </div>
+        <div className={styles.wrapper}>
+          <label className={styles.label} htmlFor="type">
+            TYPE
+          </label>
           <select
+            className={styles.select}
             name="type"
-            id=""
+            id="type"
             value={selectedType}
             onChange={handleSelectChange}
           >
@@ -51,12 +60,15 @@ export default function GalleryForm({
               );
             })}
           </select>
-        </label>
-        <label htmlFor="">
-          BREED
+        </div>
+        <div className={styles.wrapper}>
+          <label className={styles.label} htmlFor="breeds">
+            BREED
+          </label>
           <select
+            className={styles.select}
             name="breeds"
-            id=""
+            idr="breeds"
             value={selectedBreedId}
             onChange={handleSelectChange}
           >
@@ -69,12 +81,15 @@ export default function GalleryForm({
               );
             })}
           </select>
-        </label>
-        <label htmlFor="">
-          LIMIT
+        </div>
+        <div className={styles.wrapper}>
+          <label className={styles.label} htmlFor="limits">
+            LIMIT
+          </label>
           <select
+            className={`${styles.select} ${styles.limit}`}
             name="limits"
-            id=""
+            id="limits"
             value={selectedLimit}
             onChange={handleSelectChange}
           >
@@ -86,8 +101,10 @@ export default function GalleryForm({
               );
             })}
           </select>
-        </label>
-        <button type="submit">Submit</button>
+        </div>
+        <button className={styles.button} type="submit">
+          <Update className={styles.icon} />
+        </button>
       </form>
     </div>
   );

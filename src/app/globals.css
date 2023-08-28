@@ -29,8 +29,10 @@
   --font-size-hero: 44px;
   --font-size-main: 20px;
   --font-size-medium: 16px;
-  --font-siz-small: 12px;
+  --font-size-small: 12px;
+  --font-size-extra-small: 10px;
 
+  --line-height-large: 1.8;
   --line-height-main: 1.5;
   --line-height-small: 1.33;
 
