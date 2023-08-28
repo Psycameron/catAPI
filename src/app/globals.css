@@ -21,12 +21,13 @@
   /* Border */
   --border-radius-large: 20px;
   --border-radius-small: 10px;
-  --border-radius-extra-small: 5px
+  --border-radius-extra-small: 5px;
 
   /* Font */
   --font-weight-medium: 500px;
 
   --font-size-hero: 44px;
+  --font-size-title: 36px;
   --font-size-main: 20px;
   --font-size-medium: 16px;
   --font-size-small: 12px;
@@ -92,7 +93,8 @@ a {
   text-decoration: none;
 }
 
-input, select {
+input,
+select {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;

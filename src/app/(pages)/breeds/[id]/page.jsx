@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getCatInfoByBreed, getCatsByBreed } from "@/utils/api";
 
+import styles from "./page.module.css";
+
 const LIMIT_SLIDER_IMAGES = 5;
 
 export default function PetInfo({ params: { id } }) {
   const [breedInfo, setBreedInfo] = useState(null);
-  const [breedImages, setBreedImages] = useState([]);
+  const [breedImages, setBreedImages] = useState(null);
 
   useEffect(() => {
     async function fetchDataBreed() {
@@ -29,7 +31,7 @@ export default function PetInfo({ params: { id } }) {
     fetchDataImages();
   }, [id]);
 
-  if (!breedInfo) {
+  if (!breedInfo || !breedImages) {
     return;
   }
 
@@ -38,18 +40,31 @@ export default function PetInfo({ params: { id } }) {
 
   return (
     <div>
-      <h3>{id}</h3>
-      {breedImages.map(({ url, id }) => {
-        return <Image key={id} src={url} alt={name} width={320} height={320} />;
-      })}
-      <div>
-        <h3>{name}</h3>
-        <p>{description}</p>
-        <ul>
-          <li>Temperament: {temperament}</li>
-          <li>Origin:{origin}</li>
-          <li>Weight:{weight.metric}</li>
-          <li>Life span:{life_span}</li>
+      <Image
+        className={styles.image}
+        src={breedImages[0].url}
+        alt={name}
+        width={640}
+        height={360}
+      />
+      <div className={styles.container}>
+        <h4 className={styles.name}>{name}</h4>
+        <p className={styles.descr}>{description}</p>
+        <ul className={styles.list}>
+          <li className={`${styles.item} ${styles.temperament}`}>
+            Temperament: <span className={styles.span}>{temperament}</span>
+          </li>
+          <div className={styles.wrapper}>
+            <li className={styles.item}>
+              Origin: <span className={styles.span}>{origin}</span>
+            </li>
+            <li className={styles.item}>
+              Weight: <span className={styles.span}>{weight.metric}</span>
+            </li>
+            <li className={styles.item}>
+              Life span: <span className={styles.span}>{life_span}</span>
+            </li>
+          </div>
         </ul>
       </div>
     </div>
