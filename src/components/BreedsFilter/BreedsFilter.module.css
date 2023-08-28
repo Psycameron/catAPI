@@ -5,12 +5,20 @@
 .select {
   height: 40px;
   margin-right: 10px;
-  padding: 8px 10px;
+  padding: 6px 10px;
 
   font-size: var(--font-size-medium);
   color: var(--text-secondary-color);
+  border: 2px solid transparent;
   border-radius: var(--border-radius-small);
   background-color: var(--background-color);
+  cursor: pointer;
+
+  transform: background-color 250ms var(--timing-function);
+}
+
+.select:hover {
+  border: 2px solid var(--primary-muted);
 }
 
 .breeds {
