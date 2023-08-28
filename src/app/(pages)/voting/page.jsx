@@ -1,4 +1,6 @@
 "use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import LogsStory from "@/components/LogsStory/LogsStory";
 import ReactionsMenu from "@/components/ReactionsMenu/ReactionsMenu";
@@ -9,8 +11,8 @@ import {
   getFavourites,
   getRandomCat,
 } from "@/utils/api";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+
+import styles from "./page.module.css";
 
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
@@ -87,7 +89,13 @@ export default function Voting() {
 
   return (
     <div>
-      <Image src={catInfo.url} alt={"cat"} width={640} height={360} />
+      <Image
+        className={styles.image}
+        src={catInfo.url}
+        alt={"cat"}
+        width={640}
+        height={360}
+      />
       <ReactionsMenu
         catInfo={catInfo}
         favouritesIds={favouritesIds}
