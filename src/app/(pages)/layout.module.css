@@ -1,0 +1,29 @@
+.navWrapper {
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.innerWrapper {
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.title {
+  min-width: 100px;
+  height: 40px;
+  padding: 5px 30px;
+
+  font-size: var(--font-size-main);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-main);
+  letter-spacing: 2px;
+
+  text-align: center;
+  color: var(--white-color);
+  border-radius: var(--border-radius-small);
+  background-color: var(--primary);
+}
