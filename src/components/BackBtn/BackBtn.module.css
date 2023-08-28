@@ -1,0 +1,25 @@
+.button {
+  width: 40px;
+  height: 40px;
+  padding: 10px 10px;
+
+  background-color: var(--primary-muted);
+  border-radius: var(--border-radius-small);
+
+  transition: background-color 250ms var(--timing-function);
+}
+
+.icon {
+  fill: var(--primary);
+  transition: fill 250ms var(--timing-function);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--primary);
+}
+
+.button:hover .icon,
+.button:focus .icon {
+  fill: var(--white-color);
+}
