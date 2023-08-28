@@ -11,8 +11,19 @@
   height: 60px;
 
   color: var(--text-main-color);
+  border: 2px solid var(--white-color);
   border-radius: var(--border-radius-large);
   background-color: var(--white-color);
+
+  transition: border 250ms var(--timing-function);
+}
+
+.input:hover {
+  border: 2px solid var(--primary-muted);
+}
+
+.input:focus {
+  border: 2px solid var(--primary);
 }
 
 .button {
