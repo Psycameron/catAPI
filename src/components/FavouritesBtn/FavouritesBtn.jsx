@@ -23,12 +23,12 @@ export default function FavouritesBtn({
       onClick={
         isFavourites
           ? (e) => {
-              deleteFromFavourites(catForDelete[0].id, e.target.name);
-              addLog(catInfo.id, `was removed to Favourites`);
+              deleteFromFavourites(catForDelete[0].id);
+              addLog(catInfo.id, `was removed to ${e.currentTarget.name}`);
             }
           : (e) => {
-              addToFavourites(catInfo.id, e.target.name);
-              addLog(catInfo.id, `was added to Favourites`);
+              addToFavourites(catInfo.id);
+              addLog(catInfo.id, `was added to ${e.currentTarget.name}`);
             }
       }
     >
