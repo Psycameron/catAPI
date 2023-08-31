@@ -38,6 +38,9 @@
 }
 
 .icon {
+  height: 30px;
+  width: 30px;
+
   fill: var(--white-color);
   transition: fill 250ms var(--timing-function);
 }

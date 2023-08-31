@@ -15,12 +15,17 @@
   transition: background-color 250ms var(--timing-function);
 }
 
-.favIcon {
+.icon {
+  height: 30px;
+  width: 30px;
+}
+
+.fav {
   fill: var(--white-color);
   transition: fill 250ms var(--timing-function);
 }
 
-.active .unfavIcon {
+.active .unfav {
   fill: var(--white-color);
 }
 
@@ -32,6 +37,6 @@
   background-color: var(--primary-transparent);
 }
 
-.button:hover .favIcon {
+.button:hover .fav {
   fill: var(--primary);
 }

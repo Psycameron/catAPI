@@ -33,9 +33,9 @@ export default function FavouritesBtn({
       }
     >
       {!isFavourites ? (
-        <Fav className={styles.favIcon} />
+        <Fav className={`${styles.icon} ${styles.fav}`} />
       ) : (
-        <Unfav className={styles.unfavIcon} />
+        <Unfav className={`${styles.icon} ${styles.unfav}`} />
       )}
     </button>
   );
