@@ -24,11 +24,11 @@ export default function FavouritesBtn({
         isFavourites
           ? (e) => {
               deleteFromFavourites(catForDelete[0].id, e.target.name);
-              addLog(catInfo.id, `was removed to ${e.target.name}`);
+              addLog(catInfo.id, `was removed to Favourites`);
             }
           : (e) => {
               addToFavourites(catInfo.id, e.target.name);
-              addLog(catInfo.id, `was added to ${e.target.name}`);
+              addLog(catInfo.id, `was added to Favourites`);
             }
       }
     >

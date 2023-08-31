@@ -23,7 +23,7 @@ export default function ReactionsMenu({
         name="Likes"
         onClick={(e) => {
           handleReaction(catInfo.id, VALUE_FOR_LIKES, e.target.name);
-          addLog(catInfo.id, `was added to ${e.target.name}`);
+          addLog(catInfo.id, `was added to Likes`);
         }}
       >
         <Like className={styles.icon} />
@@ -41,7 +41,7 @@ export default function ReactionsMenu({
         name="Dislikes"
         onClick={(e) => {
           handleReaction(catInfo.id, VALUE_FOR_DISLIKES, e.target.name);
-          addLog(catInfo.id, `was added to ${e.target.name}`);
+          addLog(catInfo.id, `was added to Dislikes`);
         }}
       >
         <Dislike className={styles.icon} />
