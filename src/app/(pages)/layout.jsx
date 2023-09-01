@@ -5,7 +5,9 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
+import { getAllBreeds } from "@/utils/api";
 import AdditionalNav from "@/components/AdditionalNav/AdditionalNav";
 import BackBtn from "@/components/BackBtn/BackBtn";
 import SearchForm from "@/components/SearchForm/SearchForm";
@@ -16,10 +18,21 @@ import Paper from "@/components/Paper/Paper";
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
 
+  const [breeds, setBreeds] = useState(null);
+
+  async function loadBreeds() {
+    const data = await getAllBreeds();
+    setBreeds(data);
+  }
+
+  if (!breeds) {
+    loadBreeds();
+  }
+
   return (
     <section>
       <div className={styles.navWrapper}>
-        <SearchForm />
+        <SearchForm breeds={breeds} />
         <AdditionalNav />
       </div>
       <Paper>
