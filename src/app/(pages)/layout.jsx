@@ -5,7 +5,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getAllBreeds } from "@/utils/api";
 import AdditionalNav from "@/components/AdditionalNav/AdditionalNav";
@@ -19,20 +19,64 @@ export default function PagesLayout({ children }) {
   const pathname = usePathname();
 
   const [breeds, setBreeds] = useState(null);
+  const [query, setQuery] = useState("");
+  const [breedIds, setBreedIds] = useState(null);
+  const [limit, setLimit] = useState(null);
 
-  async function loadBreeds() {
-    const data = await getAllBreeds();
-    setBreeds(data);
+  useEffect(() => {
+    async function loadBreeds() {
+      const data = await getAllBreeds();
+      setBreeds(data);
+    }
+
+    loadBreeds();
+  }, []);
+
+  useEffect(() => {
+    function searchBreedIds(query) {
+      if (!breeds) {
+        return null;
+      }
+
+      const exactMatches = breeds.filter(
+        (breed) => breed.name === query.toLowerCase()
+      );
+      const similarMatches = breeds.filter(
+        (breed) =>
+          breed.name.toLowerCase().includes(query.toLowerCase()) &&
+          breed.name !== query.toLowerCase()
+      );
+
+      const sortedResults = exactMatches.concat(similarMatches);
+      const sortedIds = sortedResults.map((el) => el.id).join();
+
+      setBreedIds(sortedIds);
+      setLimit(sortedResults.length);
+    }
+
+    searchBreedIds(query);
+  }, [breeds, query]);
+
+  function handleChange(e) {
+    setQuery(e.currentTarget.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (query.trim() === "") {
+      return;
+    }
   }
 
   if (!breeds) {
-    loadBreeds();
+    return null;
   }
 
   return (
     <section>
       <div className={styles.navWrapper}>
-        <SearchForm breeds={breeds} />
+        <SearchForm handleSubmit={handleSubmit} handleChange={handleChange} />
         <AdditionalNav />
       </div>
       <Paper>
