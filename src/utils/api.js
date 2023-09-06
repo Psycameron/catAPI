@@ -5,11 +5,6 @@ const API_KEY =
 
 axios.defaults.baseURL = "https://api.thecatapi.com/v1";
 
-const headers = {
-  "Content-Type": "application/json",
-  "x-api-key": API_KEY,
-};
-
 export async function getRandomCat() {
   try {
     const response = await axios.get(`/images/search?api_key=${API_KEY}`);
@@ -61,7 +56,7 @@ export async function getCatInfoByBreed(id) {
 
 export async function addImageReaction(data) {
   try {
-    await axios.post(`/votes`, data, { headers });
+    await axios.post(`/votes?api_key=${API_KEY}`, data);
   } catch (error) {
     console.error(error);
   }
@@ -72,13 +67,13 @@ export async function getFavourites() {
     const response = await axios.get(`/favourites?api_key=${API_KEY}`);
     return response.data;
   } catch (error) {
-    console.error("Error fetching breeds:", error);
+    console.error("Error fetching favourites:", error);
   }
 }
 
 export async function addImageToFavourites(data) {
   try {
-    const response = await axios.post(`/favourites`, data, { headers });
+    const response = await axios.post(`/favourites?api_key=${API_KEY}`, data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -87,7 +82,7 @@ export async function addImageToFavourites(data) {
 
 export async function deleteImageFromFavourites(id) {
   try {
-    await axios.delete(`/favourites/${id}`, { headers });
+    await axios.delete(`/favourites/${id}?api_key=${API_KEY}`);
   } catch (error) {
     console.error(error);
   }
