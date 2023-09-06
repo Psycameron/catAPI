@@ -27,6 +27,10 @@ export default function Breeds() {
   useEffect(() => {
     async function fetchData() {
       const data = await getCatsByBreed(selectedBreedId, selectedLimit);
+      console.log(`🚀 ~ fetchData ~ data:`, data);
+      const transformedData = data.map((el) => el.breeds[0]);
+      console.log(`🚀 ~ fetchData ~ transformedData:`, transformedData);
+
       setCats(data);
     }
 
