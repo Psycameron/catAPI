@@ -41,6 +41,7 @@ export default function GalleryForm({
             })}
           </select>
         </div>
+
         <div className={styles.wrapper}>
           <label className={styles.label} htmlFor="type">
             TYPE
@@ -61,6 +62,7 @@ export default function GalleryForm({
             })}
           </select>
         </div>
+
         <div className={styles.wrapper}>
           <label className={styles.label} htmlFor="breeds">
             BREED
@@ -82,6 +84,7 @@ export default function GalleryForm({
             })}
           </select>
         </div>
+
         <div className={styles.wrapper}>
           <label className={styles.label} htmlFor="limits">
             LIMIT
@@ -102,6 +105,7 @@ export default function GalleryForm({
             })}
           </select>
         </div>
+
         <button className={styles.button} type="submit">
           <Update className={styles.icon} />
         </button>
