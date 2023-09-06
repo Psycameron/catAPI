@@ -9,7 +9,7 @@ const VALUE_FOR_DISLIKES = -1;
 
 export default function ReactionsMenu({
   catInfo,
-  favouritesIds,
+  favouritesCats,
   handleReaction,
   addToFavourites,
   deleteFromFavourites,
@@ -30,7 +30,7 @@ export default function ReactionsMenu({
       </button>
       <FavouritesBtn
         catInfo={catInfo}
-        favouritesIds={favouritesIds}
+        favouritesCats={favouritesCats}
         addToFavourites={addToFavourites}
         deleteFromFavourites={deleteFromFavourites}
         addLog={addLog}

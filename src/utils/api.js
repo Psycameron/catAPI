@@ -71,7 +71,7 @@ export async function getFavourites() {
   }
 }
 
-export async function addImageToFavourites(data) {
+export async function addCatToFavourites(data) {
   try {
     const response = await axios.post(`/favourites?api_key=${API_KEY}`, data);
     return response.data;
@@ -80,7 +80,7 @@ export async function addImageToFavourites(data) {
   }
 }
 
-export async function deleteImageFromFavourites(id) {
+export async function deleteCatFromFavourites(id) {
   try {
     await axios.delete(`/favourites/${id}?api_key=${API_KEY}`);
   } catch (error) {

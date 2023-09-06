@@ -4,16 +4,18 @@ import Unfav from "public/images/svg/unfav.svg";
 
 export default function FavouritesBtn({
   catInfo,
-  favouritesIds,
+  favouritesCats,
   addToFavourites,
   deleteFromFavourites,
   addLog,
 }) {
-  const isFavourites = favouritesIds
+  const isFavourites = favouritesCats
     .map((el) => el.image_id)
     .includes(catInfo.id);
 
-  const catForDelete = favouritesIds.filter((el) => el.image_id === catInfo.id);
+  const catForDelete = favouritesCats.filter(
+    (el) => el.image_id === catInfo.id
+  );
 
   return (
     <button

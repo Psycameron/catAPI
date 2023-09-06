@@ -4,20 +4,21 @@ import Image from "next/image";
 
 import LogsStory from "@/components/LogsStory/LogsStory";
 import ReactionsMenu from "@/components/ReactionsMenu/ReactionsMenu";
-import {
-  addImageReaction,
-  addImageToFavourites,
-  deleteImageFromFavourites,
-  getFavourites,
-  getRandomCat,
-} from "@/utils/api";
+import { useFavourites } from "@/hooks/useFavourites";
+import { addImageReaction, getRandomCat } from "@/utils/api";
 
 import styles from "./page.module.css";
 
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
-  const [favouritesIds, setFavouritesIds] = useState([]);
   const [logs, setLogs] = useState([]);
+
+  const {
+    favouritesCats,
+    addToFavourites,
+    deleteFromFavourites,
+    fetchFavourites,
+  } = useFavourites();
 
   useEffect(() => {
     async function fetchCat() {
@@ -27,7 +28,7 @@ export default function Voting() {
 
     fetchCat();
     fetchFavourites();
-  }, []);
+  }, [fetchFavourites]);
 
   if (!catInfo) {
     return;
@@ -44,27 +45,6 @@ export default function Voting() {
     await addImageReaction(data);
 
     loadNewCatImage();
-  }
-
-  async function fetchFavourites() {
-    const data = await getFavourites();
-
-    setFavouritesIds(data);
-  }
-
-  async function addToFavourites(id) {
-    const data = { image_id: id };
-
-    const res = await addImageToFavourites(data);
-    setFavouritesIds((prevFavouritesIds) => [...prevFavouritesIds, res.id]);
-
-    fetchFavourites();
-  }
-
-  async function deleteFromFavourites(id) {
-    await deleteImageFromFavourites(id);
-
-    fetchFavourites();
   }
 
   function addLog(id, message) {
@@ -98,7 +78,7 @@ export default function Voting() {
       />
       <ReactionsMenu
         catInfo={catInfo}
-        favouritesIds={favouritesIds}
+        favouritesCats={favouritesCats}
         handleReaction={handleReaction}
         addToFavourites={addToFavourites}
         deleteFromFavourites={deleteFromFavourites}
