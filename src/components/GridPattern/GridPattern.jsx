@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 export default function GridPattern({ cats, selectedBreedId }) {
   const pathname = usePathname();
-  console.log(`🚀 ~ GridPattern ~ pathname:`, pathname);
 
   if (!cats) {
     return;
