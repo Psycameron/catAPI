@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useLogs() {
+export default function useLogs() {
   const [logs, setLogs] = useState([]);
 
   function addLog(id, message) {

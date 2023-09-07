@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useFavourites } from "@/hooks/useFavourites";
-import { useLogs } from "@/hooks/useLogs";
+import { useEffect } from "react";
+import useFavourites from "@/hooks/useFavourites";
+import useLogs from "@/hooks/useLogs";
 import { getFavourites } from "@/utils/api";
 
 import LogsStory from "@/components/LogsStory/LogsStory";
@@ -16,7 +16,7 @@ export default function Favourites() {
   useEffect(() => {
     async function fetchData() {
       const data = await getFavourites();
-      console.log(`🚀 ~ fetchData ~ data:`, data);
+
       setFavouritesCats(data);
     }
 

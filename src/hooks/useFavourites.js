@@ -5,7 +5,7 @@ import {
 } from "@/utils/api";
 import { useCallback, useState } from "react";
 
-export function useFavourites() {
+export default function useFavourites() {
   const [favouritesCats, setFavouritesCats] = useState([]);
 
   const fetchFavourites = useCallback(async () => {

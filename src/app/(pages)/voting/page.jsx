@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useFavourites } from "@/hooks/useFavourites";
-import { useLogs } from "@/hooks/useLogs";
+import useFavourites from "@/hooks/useFavourites";
+import useLogs from "@/hooks/useLogs";
 import Image from "next/image";
 
 import LogsStory from "@/components/LogsStory/LogsStory";
