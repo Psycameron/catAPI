@@ -9,6 +9,7 @@ export default function GridPattern({
   cats,
   selectedBreedId,
   deleteFromFavourites,
+  addLog,
 }) {
   const pathname = usePathname();
 
@@ -17,7 +18,7 @@ export default function GridPattern({
   }
 
   return (
-    <ul className={styles.parent}>
+    <ul className={styles.list}>
       {pathname === "/breeds" &&
         cats.map(({ url, id, breeds }) => (
           <li className={styles.item} key={id}>
@@ -64,7 +65,7 @@ export default function GridPattern({
               name="Favourites"
               onClick={(e) => {
                 deleteFromFavourites(id);
-                // addLog(catInfo.id, `was removed from ${e.currentTarget.name}`);
+                addLog(image.id, `was removed from ${e.currentTarget.name}`);
               }}
             >
               <Unfav className={`${styles.icon} ${styles.unfav}`} />
