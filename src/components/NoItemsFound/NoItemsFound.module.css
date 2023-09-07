@@ -1,0 +1,11 @@
+.wrapper {
+  padding: 15px 20px 15px;
+
+  border-radius: var(--border-radius-small);
+  background-color: var(--background-color);
+}
+
+.text {
+  font-size: var(--font-size-medium);
+  color: var(--text-secondary-color);
+}

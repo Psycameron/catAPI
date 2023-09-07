@@ -1,6 +1,7 @@
 "use client";
 
 import GridPattern from "@/components/GridPattern/GridPattern";
+import NoItemsFound from "@/components/NoItemsFound/NoItemsFound";
 import useVotes from "@/hooks/useVotes";
 import { useEffect } from "react";
 
