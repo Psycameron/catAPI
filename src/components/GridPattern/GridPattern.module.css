@@ -24,12 +24,13 @@
 
   width: 100%;
   height: 100%;
+  scale: 0.6;
 
   visibility: hidden;
   background-color: var(--primary-transparent);
   border-radius: var(--border-radius-large);
 
-  transition: visibility 250ms var(--timing-function);
+  transition: visibility, scale 250ms var(--timing-function);
 }
 
 .button {
@@ -48,7 +49,7 @@
   background-color: var(--white-color);
   border-radius: var(--border-radius-small);
 
-  transition: visibility 250ms var(--timing-function);
+  transition: visibility;
 }
 
 .icon {
@@ -61,4 +62,5 @@
 .item:hover .button,
 .item:hover .imageContainer::before {
   visibility: visible;
+  scale: 1;
 }
