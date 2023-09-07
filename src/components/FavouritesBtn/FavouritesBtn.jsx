@@ -16,6 +16,8 @@ export default function FavouritesBtn({
   const catForDelete = favouritesCats.filter(
     (el) => el.image_id === catInfo.id
   );
+  console.log(`🚀 ~ favouritesCats:`, favouritesCats);
+  console.log(`🚀 ~ catForDelete:`, catForDelete);
 
   return (
     <button
@@ -26,7 +28,7 @@ export default function FavouritesBtn({
         isFavourites
           ? (e) => {
               deleteFromFavourites(catForDelete[0].id);
-              addLog(catInfo.id, `was removed to ${e.currentTarget.name}`);
+              addLog(catInfo.id, `was removed from ${e.currentTarget.name}`);
             }
           : (e) => {
               addToFavourites(catInfo.id);
