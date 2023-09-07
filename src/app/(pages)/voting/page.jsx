@@ -1,17 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useFavourites } from "@/hooks/useFavourites";
+import { useLogs } from "@/hooks/useLogs";
 import Image from "next/image";
 
 import LogsStory from "@/components/LogsStory/LogsStory";
 import ReactionsMenu from "@/components/ReactionsMenu/ReactionsMenu";
-import { useFavourites } from "@/hooks/useFavourites";
 import { addImageReaction, getRandomCat } from "@/utils/api";
 
 import styles from "./page.module.css";
 
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
-  const [logs, setLogs] = useState([]);
 
   const {
     favouritesCats,
@@ -19,6 +19,8 @@ export default function Voting() {
     deleteFromFavourites,
     fetchFavourites,
   } = useFavourites();
+
+  const { logs, addLog } = useLogs();
 
   useEffect(() => {
     async function fetchCat() {
@@ -45,26 +47,6 @@ export default function Voting() {
     await addImageReaction(data);
 
     loadNewCatImage();
-  }
-
-  function addLog(id, message) {
-    const log = {
-      date: formatTime(new Date()),
-      id,
-      action: message,
-    };
-
-    setLogs((prevLogs) => [log, ...prevLogs]);
-  }
-
-  function formatTime(date) {
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    const formattedHours = hours < 10 ? `0${hours}` : hours;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-    return `${formattedHours}:${formattedMinutes}`;
   }
 
   return (
