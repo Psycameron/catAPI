@@ -27,6 +27,7 @@
 
   visibility: hidden;
   background-color: var(--primary-transparent);
+  border-radius: var(--border-radius-large);
 
   transition: visibility 250ms var(--timing-function);
 }
