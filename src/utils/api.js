@@ -5,6 +5,8 @@ const API_KEY =
 
 axios.defaults.baseURL = "https://api.thecatapi.com/v1";
 
+// ======== Images ========
+
 export async function getRandomCat() {
   try {
     const response = await axios.get(`/images/search?api_key=${API_KEY}`);
@@ -25,20 +27,22 @@ export async function getCatsForGallery(order, type, breedId, limit) {
   }
 }
 
-export async function getAllBreeds() {
+export async function getCatsByBreed(id, limit) {
   try {
-    const response = await axios.get(`/breeds?api_key=${API_KEY}`);
+    const response = await axios.get(
+      `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching breeds:", error);
   }
 }
 
-export async function getCatsByBreed(id, limit) {
+// ======== Breeds ========
+
+export async function getAllBreeds() {
   try {
-    const response = await axios.get(
-      `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}`
-    );
+    const response = await axios.get(`/breeds?api_key=${API_KEY}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching breeds:", error);
@@ -54,6 +58,17 @@ export async function getCatInfoByBreed(id) {
   }
 }
 
+// ======== Votes ========
+
+export async function getAllVotes() {
+  try {
+    const response = await axios.get(`/votes?api_key=${API_KEY}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export async function addImageReaction(data) {
   try {
     await axios.post(`/votes?api_key=${API_KEY}`, data);
@@ -61,6 +76,8 @@ export async function addImageReaction(data) {
     console.error(error);
   }
 }
+
+// ======== Favourites ========
 
 export async function getFavourites() {
   try {

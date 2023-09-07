@@ -72,6 +72,19 @@ export default function GridPattern({
             </button>
           </li>
         ))}
+
+      {pathname === "/likes" &&
+        cats.map(({ id, image }) => (
+          <li className={styles.item} key={id}>
+            <Image
+              className={styles.image}
+              src={image.url}
+              alt={image.url}
+              width={310}
+              height={310}
+            />
+          </li>
+        ))}
     </ul>
   );
 }
