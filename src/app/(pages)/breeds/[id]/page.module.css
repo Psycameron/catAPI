@@ -16,7 +16,8 @@
 .name {
   position: absolute;
   top: 468px;
-  left: 243px;
+  left: 50%;
+  transform: translateX(-50%);
 
   padding: 5px 40px;
 
@@ -25,6 +26,7 @@
   font-weight: var(--font-weight-medium);
   color: var(--text-main-color);
   background-color: var(--white-color);
+  white-space: nowrap;
 }
 
 .descr {
