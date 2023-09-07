@@ -1,3 +1,19 @@
+"use client";
+
+import GridPattern from "@/components/GridPattern/GridPattern";
+import useVotes from "@/hooks/useVotes";
+import { useEffect } from "react";
+
 export default function Dislikes() {
-  return <div>Dislikes Page</div>;
+  const { dislikesCats, fetchAllVotes } = useVotes();
+
+  useEffect(() => {
+    fetchAllVotes();
+  }, [fetchAllVotes]);
+
+  return (
+    <div>
+      <GridPattern cats={dislikesCats} />
+    </div>
+  );
 }

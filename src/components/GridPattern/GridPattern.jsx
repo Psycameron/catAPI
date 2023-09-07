@@ -73,7 +73,7 @@ export default function GridPattern({
           </li>
         ))}
 
-      {pathname === "/likes" &&
+      {(pathname === "/likes" || pathname === "/dislikes") &&
         cats.map(({ id, image }) => (
           <li className={styles.item} key={id}>
             <Image
