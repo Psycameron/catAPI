@@ -41,6 +41,7 @@ export function useFavourites() {
 
   return {
     favouritesCats,
+    setFavouritesCats,
     addToFavourites,
     deleteFromFavourites,
     fetchFavourites,

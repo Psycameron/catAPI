@@ -1,9 +1,15 @@
-import Image from "next/image";
-import styles from "./GridPattern.module.css";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function GridPattern({ cats, selectedBreedId }) {
+import styles from "./GridPattern.module.css";
+import Unfav from "public/images/svg/unfav.svg";
+
+export default function GridPattern({
+  cats,
+  selectedBreedId,
+  deleteFromFavourites,
+}) {
   const pathname = usePathname();
 
   if (!cats) {
@@ -43,13 +49,26 @@ export default function GridPattern({ cats, selectedBreedId }) {
       {pathname === "/favourites" &&
         cats.map(({ id, image }) => (
           <li className={styles.item} key={id}>
-            <Image
-              className={styles.image}
-              src={image.url}
-              alt={image.url}
-              width={310}
-              height={310}
-            />
+            <div className={styles.imageContainer}>
+              <Image
+                className={styles.image}
+                src={image.url}
+                alt={image.url}
+                width={310}
+                height={310}
+              />
+            </div>
+            <button
+              className={`${styles.button} ${styles.active}}`}
+              type="button"
+              name="Favourites"
+              onClick={(e) => {
+                deleteFromFavourites(id);
+                // addLog(catInfo.id, `was removed from ${e.currentTarget.name}`);
+              }}
+            >
+              <Unfav className={`${styles.icon} ${styles.unfav}`} />
+            </button>
           </li>
         ))}
     </ul>
