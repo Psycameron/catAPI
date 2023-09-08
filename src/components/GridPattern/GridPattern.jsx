@@ -27,8 +27,8 @@ export default function GridPattern({
                 className={styles.image}
                 src={url}
                 alt={breeds[0].name}
-                width={310}
-                height={310}
+                fill={true}
+                objectFit="cover"
               />
             </Link>
           </li>
@@ -41,8 +41,8 @@ export default function GridPattern({
               className={styles.image}
               src={url}
               alt={breeds[0].name}
-              width={310}
-              height={310}
+              fill={true}
+              objectFit="cover"
             />
           </li>
         ))}
@@ -55,8 +55,8 @@ export default function GridPattern({
                 className={styles.image}
                 src={image.url}
                 alt={image.url}
-                width={310}
-                height={310}
+                fill={true}
+                objectFit="cover"
               />
             </div>
             <button
@@ -80,8 +80,8 @@ export default function GridPattern({
               className={styles.image}
               src={image.url}
               alt={image.url}
-              width={310}
-              height={310}
+              fill={true}
+              objectFit="cover"
             />
           </li>
         ))}
