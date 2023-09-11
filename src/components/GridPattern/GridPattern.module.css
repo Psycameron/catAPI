@@ -74,6 +74,7 @@
 
 .item:hover .button,
 .item:hover .imageContainer::before {
+  z-index: 2;
   visibility: visible;
   scale: 1;
 }
