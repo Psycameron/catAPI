@@ -17,7 +17,6 @@ import Paper from "@/components/Paper/Paper";
 
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
-  console.log(`🚀 ~ PagesLayout ~ pathname:`, pathname);
 
   const [breeds, setBreeds] = useState(null);
   const [query, setQuery] = useState("");
