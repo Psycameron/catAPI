@@ -5,17 +5,24 @@
   border: 2px solid var(--primary-muted);
 }
 
+.imageContainer {
+  position: relative;
+  width: 640px;
+  height: 360px;
+
+  margin-bottom: 52px;
+}
+
 .image {
   position: relative;
-  margin-bottom: 52px;
 
-  object-fit: contain;
+  object-fit: cover;
   border-radius: var(--border-radius-large);
 }
 
 .name {
   position: absolute;
-  top: 468px;
+  top: 460px;
   left: 50%;
   transform: translateX(-50%);
 
@@ -33,7 +40,7 @@
   margin-bottom: 20px;
 
   text-align: center;
-  font-weight: var(-font-weight-medium);
+  font-weight: var(--font-weight-medium);
   color: var(--text-secondary-color);
 }
 
@@ -44,7 +51,6 @@
 
 .item {
   font-size: var(--font-size-medium);
-  font-weight: var(-font-weight-medium);
 }
 
 .item.temperament {
@@ -52,6 +58,10 @@
   flex-direction: column;
 
   max-width: 270px;
+}
+
+.category {
+  font-weight: var(--font-weight-medium);
 }
 
 .span {
