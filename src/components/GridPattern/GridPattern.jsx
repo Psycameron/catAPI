@@ -56,7 +56,7 @@ export default function GridPattern({
                 src={image.url}
                 alt={image.url}
                 fill={true}
-                objectFit="cover"
+                sizes="400px"
               />
             </div>
             <button
