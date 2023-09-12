@@ -55,6 +55,30 @@
     scale 250ms var(--timing-function);
 }
 
+.link {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 44px);
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: calc(100% - 20px);
+  height: 34px;
+
+  opacity: 0;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-small);
+
+  transition: opacity 250ms var(--timing-function);
+}
+
+.breedTitle {
+  font-size: var(--font-size-medium);
+  color: var(--primary);
+}
+
 .button {
   position: absolute;
   left: 50%;
@@ -82,6 +106,7 @@
 }
 
 .item:hover .button,
+.item:hover .link,
 .item:hover .imageContainer::before {
   z-index: 2;
   opacity: 1;

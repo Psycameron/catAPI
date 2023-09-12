@@ -11,6 +11,7 @@ export default function GridPattern({
   deleteFromFavourites,
   addLog,
 }) {
+  console.log(`🚀 ~ cats:`, cats);
   const pathname = usePathname();
 
   if (!cats) {
@@ -22,14 +23,17 @@ export default function GridPattern({
       {pathname === "/breeds" &&
         cats.map(({ url, id, breeds }) => (
           <li className={styles.item} key={id}>
-            <Link href={`/breeds/${selectedBreedId}`}>
+            <div className={styles.imageContainer}>
               <Image
                 className={styles.image}
                 src={url}
                 alt={breeds[0].name}
                 fill={true}
-                objectFit="cover"
+                sizes="400px"
               />
+            </div>
+            <Link className={styles.link} href={`/breeds/${selectedBreedId}`}>
+              <p className={styles.breedTitle}>{breeds[0].name}</p>
             </Link>
           </li>
         ))}
