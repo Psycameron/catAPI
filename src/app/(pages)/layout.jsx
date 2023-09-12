@@ -17,6 +17,7 @@ import Paper from "@/components/Paper/Paper";
 
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
+  console.log(`🚀 ~ PagesLayout ~ pathname:`, pathname);
 
   const [breeds, setBreeds] = useState(null);
   const [query, setQuery] = useState("");
@@ -82,9 +83,20 @@ export default function PagesLayout({ children }) {
       <Paper>
         <div className={styles.innerWrapper}>
           <BackBtn />
-          <h2 className={styles.title}>
-            {pathname.replace("/", "").toUpperCase()}
-          </h2>
+          {pathname.startsWith("/breeds/") ? (
+            <>
+              <h2 className={`${styles.title} ${styles.titleNotActive}`}>
+                {pathname.slice(1, 7).toUpperCase()}
+              </h2>
+              <h2 className={styles.title}>
+                {pathname.replace("/breeds/", "").toUpperCase()}
+              </h2>
+            </>
+          ) : (
+            <h2 className={styles.title}>
+              {pathname.replace("/", "").toUpperCase()}
+            </h2>
+          )}
         </div>
         {children}
       </Paper>
