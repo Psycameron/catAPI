@@ -12,13 +12,9 @@ import styles from "./page.module.css";
 
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
+  console.log(`🚀 ~ Voting ~ catInfo:`, catInfo);
 
-  const {
-    favouritesCats,
-    addToFavourites,
-    deleteFromFavourites,
-    fetchFavourites,
-  } = useFavourites();
+  const { fetchFavourites } = useFavourites();
 
   const { logs, addLog } = useLogs();
 
@@ -59,11 +55,8 @@ export default function Voting() {
         height={360}
       />
       <ReactionsMenu
-        catInfo={catInfo}
-        favouritesCats={favouritesCats}
+        catId={catInfo.id}
         handleReaction={handleReaction}
-        addToFavourites={addToFavourites}
-        deleteFromFavourites={deleteFromFavourites}
         addLog={addLog}
       />
       <LogsStory logs={logs} />

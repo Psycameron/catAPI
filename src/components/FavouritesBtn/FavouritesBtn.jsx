@@ -1,23 +1,17 @@
+import useFavourites from "@/hooks/useFavourites";
 import styles from "./FavouritesBtn.module.css";
 import Fav from "public/images/svg/fav.svg";
 import Unfav from "public/images/svg/unfav.svg";
 
-export default function FavouritesBtn({
-  catInfo,
-  favouritesCats,
-  addToFavourites,
-  deleteFromFavourites,
-  addLog,
-}) {
-  const isFavourites = favouritesCats
-    .map((el) => el.image_id)
-    .includes(catInfo.id);
+export default function FavouritesBtn({ catId, addLog }) {
+  const { favouritesCats, addToFavourites, deleteFromFavourites } =
+    useFavourites();
+
+  const isFavourites = favouritesCats.map((el) => el.image_id).includes(catId);
 
   const catForDelete = favouritesCats.filter(
-    (el) => el.image_id === catInfo.id
+    (el) => el.image_id === catId
   );
-  console.log(`🚀 ~ favouritesCats:`, favouritesCats);
-  console.log(`🚀 ~ catForDelete:`, catForDelete);
 
   return (
     <button
@@ -28,11 +22,11 @@ export default function FavouritesBtn({
         isFavourites
           ? (e) => {
               deleteFromFavourites(catForDelete[0].id);
-              addLog(catInfo.id, `was removed from ${e.currentTarget.name}`);
+              addLog(catId, `was removed from ${e.currentTarget.name}`);
             }
           : (e) => {
-              addToFavourites(catInfo.id);
-              addLog(catInfo.id, `was added to ${e.currentTarget.name}`);
+              addToFavourites(catId);
+              addLog(catId, `was added to ${e.currentTarget.name}`);
             }
       }
     >
