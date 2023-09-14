@@ -7,18 +7,14 @@ import { useEffect, useState } from "react";
 
 export default function Gallery() {
   const [cats, setCats] = useState(null);
-  console.log(`🚀 ~ Gallery ~ cats:`, cats);
+
   const [breeds, setBreeds] = useState(null);
 
   const [selectedOrder, setSelectedOrder] = useState("RANDOM");
-  // console.log(`🚀 ~ Gallery ~ selectedOrder:`, selectedOrder);
   const [selectedType, setSelectedType] = useState("gif,png,jpeg");
-  // console.log(`🚀 ~ Gallery ~ selectedType:`, selectedType);
   const [selectedBreedId, setSelectedBreedId] = useState("default");
-  // console.log(`🚀 ~ Gallery ~ selectedBreedId:`, selectedBreedId);
   const [selectedLimit, setSelectedLimit] = useState(10);
-  // console.log(`🚀 ~ Gallery ~ selectedLimit:`, selectedLimit);
-
+  
   useEffect(() => {
     async function fetchDataBreeds() {
       const data = await getAllBreeds();

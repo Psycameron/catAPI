@@ -12,7 +12,6 @@ export default function GridPattern({
   deleteFromFavourites,
   addLog,
 }) {
-  console.log(`🚀 ~ cats:`, cats);
   const pathname = usePathname();
 
   if (!cats) {
@@ -31,6 +30,7 @@ export default function GridPattern({
                 alt={breeds[0].name}
                 fill={true}
                 sizes="380px"
+                priority
               />
             </div>
             <Link className={styles.link} href={`/breeds/${selectedBreedId}`}>

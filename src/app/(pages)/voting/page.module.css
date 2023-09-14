@@ -1,7 +1,12 @@
-.image {
+.imageContainer {
   position: relative;
+  width: 640px;
+  height: 360px;
+}
+
+.image {
   margin-bottom: 52px;
 
-  object-fit: contain;
+  object-fit: cover;
   border-radius: var(--border-radius-large);
 }

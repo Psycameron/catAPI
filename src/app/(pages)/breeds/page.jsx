@@ -9,9 +9,7 @@ import GridPattern from "@/components/GridPattern/GridPattern";
 
 export default function Breeds() {
   const [cats, setCats] = useState(null);
-  // console.log(`🚀 ~ Breeds ~ cats:`, cats);
   const [breeds, setBreeds] = useState(null);
-  // console.log(`🚀 ~ Breeds ~ breeds:`, breeds);
   const [selectedLimit, setSelectedLimit] = useState(10);
   const [selectedBreedId, setSelectedBreedId] = useState("default");
 
@@ -27,9 +25,6 @@ export default function Breeds() {
   useEffect(() => {
     async function fetchData() {
       const data = await getCatsByBreed(selectedBreedId, selectedLimit);
-      console.log(`🚀 ~ fetchData ~ data:`, data);
-      const transformedData = data.map((el) => el.breeds[0]);
-      console.log(`🚀 ~ fetchData ~ transformedData:`, transformedData);
 
       setCats(data);
     }

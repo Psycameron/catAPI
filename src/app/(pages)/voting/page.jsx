@@ -12,7 +12,6 @@ import styles from "./page.module.css";
 
 export default function Voting() {
   const [catInfo, setCatInfo] = useState(null);
-  console.log(`🚀 ~ Voting ~ catInfo:`, catInfo);
 
   const { fetchFavourites } = useFavourites();
 
@@ -46,13 +45,14 @@ export default function Voting() {
   }
 
   return (
-    <div>
+    <div className={styles.imageContainer}>
       <Image
         className={styles.image}
         src={catInfo.url}
         alt={"cat"}
-        width={640}
-        height={360}
+        fill={true}
+        sizes="640px"
+        priority
       />
       <ReactionsMenu
         catId={catInfo.id}
