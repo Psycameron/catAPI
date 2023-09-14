@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import styles from "./GridPattern.module.css";
 import Unfav from "public/images/svg/unfav.svg";
+import FavouritesBtn from "../FavouritesBtn/FavouritesBtn";
 
 export default function GridPattern({
   cats,
@@ -29,7 +30,7 @@ export default function GridPattern({
                 src={url}
                 alt={breeds[0].name}
                 fill={true}
-                sizes="400px"
+                sizes="380px"
               />
             </div>
             <Link className={styles.link} href={`/breeds/${selectedBreedId}`}>
@@ -41,13 +42,16 @@ export default function GridPattern({
       {pathname === "/gallery" &&
         cats.map(({ url, id, breeds }) => (
           <li className={styles.item} key={id}>
-            <Image
-              className={styles.image}
-              src={url}
-              alt={breeds[0].name}
-              fill={true}
-              objectFit="cover"
-            />
+            <div className={styles.imageContainer}>
+              <Image
+                className={styles.image}
+                src={url}
+                alt={breeds[0].name}
+                fill={true}
+                sizes="380px"
+              />
+            </div>
+            {/* <FavouritesBtn catId={id} /> */}
           </li>
         ))}
 
@@ -60,7 +64,7 @@ export default function GridPattern({
                 src={image.url}
                 alt={image.url}
                 fill={true}
-                sizes="400px"
+                sizes="380px"
               />
             </div>
             <button
@@ -85,7 +89,7 @@ export default function GridPattern({
               src={image.url}
               alt={image.url}
               fill={true}
-              objectFit="cover"
+              sizes="380px"
             />
           </li>
         ))}
