@@ -1,17 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getCatInfoByBreed, getCatsByBreed } from "@/utils/api";
 
 import styles from "./page.module.css";
-// import placeholderSVG from "/public/images/svg/placeholder.svg";
+import Slider from "@/components/Slider/Slider";
 
 const LIMIT_SLIDER_IMAGES = 5;
-
-// const placeholderDataURL =
-//   "data:image/svg+xml;base64," +
-//   window.btoa(decodeURIComponent(encodeURIComponent(placeholderSVG)));
 
 export default function PetInfo({ params: { id } }) {
   const [breedInfo, setBreedInfo] = useState(null);
@@ -46,17 +41,9 @@ export default function PetInfo({ params: { id } }) {
   return (
     <div>
       <div className={styles.imageContainer}>
-        <Image
-          className={styles.image}
-          src={breedImages[0].url}
-          alt={name}
-          fill={true}
-          sizes="640px"
-          priority
-          // placeholder="blur"
-          // blurDataURL={placeholderDataURL}
-        />
+        <Slider images={breedImages} />
       </div>
+
       <div className={styles.container}>
         <h4 className={styles.name}>{name}</h4>
         <p className={styles.descr}>{description}</p>

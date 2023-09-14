@@ -13,13 +13,6 @@
   margin-bottom: 52px;
 }
 
-.image {
-  position: relative;
-
-  object-fit: cover;
-  border-radius: var(--border-radius-large);
-}
-
 .name {
   position: absolute;
   top: 460px;
