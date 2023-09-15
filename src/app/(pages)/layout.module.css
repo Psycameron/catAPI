@@ -28,7 +28,7 @@
   background-color: var(--primary);
 }
 
-.titleNotActive {
+.title.titleNotActive {
   color: var(--primary);
   background-color: var(--primary-muted);
 }
