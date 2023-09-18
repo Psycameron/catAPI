@@ -14,48 +14,53 @@ import SearchForm from "@/components/SearchForm/SearchForm";
 
 import styles from "./layout.module.css";
 import Paper from "@/components/Paper/Paper";
+import { useSearch } from "@/contexts/searchContext";
 
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
 
-  const [breeds, setBreeds] = useState(null);
-  const [query, setQuery] = useState("");
-  const [breedIds, setBreedIds] = useState(null);
-  const [limit, setLimit] = useState(null);
+  const { query, breeds, breedIds, limit, setQuery } = useSearch();
+  console.log(`🚀 ~ PagesLayout ~ query:`, query);
+  console.log(`🚀 ~ PagesLayout ~ breedIds:`, breedIds);
 
-  useEffect(() => {
-    async function loadBreeds() {
-      const data = await getAllBreeds();
-      setBreeds(data);
-    }
+  // const [breeds, setBreeds] = useState(null);
+  // const [query, setQuery] = useState("");
+  // const [breedIds, setBreedIds] = useState(null);
+  // const [limit, setLimit] = useState(null);
 
-    loadBreeds();
-  }, []);
+  // useEffect(() => {
+  //   async function loadBreeds() {
+  //     const data = await getAllBreeds();
+  //     setBreeds(data);
+  //   }
 
-  useEffect(() => {
-    function searchBreedIds(query) {
-      if (!breeds) {
-        return null;
-      }
+  //   loadBreeds();
+  // }, []);
 
-      const exactMatches = breeds.filter(
-        (breed) => breed.name === query.toLowerCase()
-      );
-      const similarMatches = breeds.filter(
-        (breed) =>
-          breed.name.toLowerCase().includes(query.toLowerCase()) &&
-          breed.name !== query.toLowerCase()
-      );
+  // useEffect(() => {
+  //   function searchBreedIds(query) {
+  //     if (!breeds) {
+  //       return null;
+  //     }
 
-      const sortedResults = exactMatches.concat(similarMatches);
-      const sortedIds = sortedResults.map((el) => el.id).join();
+  //     const exactMatches = breeds.filter(
+  //       (breed) => breed.name === query.toLowerCase()
+  //     );
+  //     const similarMatches = breeds.filter(
+  //       (breed) =>
+  //         breed.name.toLowerCase().includes(query.toLowerCase()) &&
+  //         breed.name !== query.toLowerCase()
+  //     );
 
-      setBreedIds(sortedIds);
-      setLimit(sortedResults.length);
-    }
+  //     const sortedResults = exactMatches.concat(similarMatches);
+  //     const sortedIds = sortedResults.map((el) => el.id).join();
 
-    searchBreedIds(query);
-  }, [breeds, query]);
+  //     setBreedIds(sortedIds);
+  //     setLimit(sortedResults.length);
+  //   }
+
+  //   searchBreedIds(query);
+  // }, [breeds, query]);
 
   function handleChange(e) {
     setQuery(e.currentTarget.value);

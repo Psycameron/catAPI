@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
 
 import "./globals.css";
+import SearchProvider from "@/contexts/searchContext";
 
 const jost = Jost({ subsets: ["latin"] });
 
@@ -15,13 +16,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={jost.className}>
-        <header>
-          <Header />
-          <Navbar />
-        </header>
-        <main className="mainBg">{children}</main>
-      </body>
+      <SearchProvider>
+        <body className={jost.className}>
+          <header>
+            <Header />
+            <Navbar />
+          </header>
+          <main className="mainBg">{children}</main>
+        </body>
+      </SearchProvider>
     </html>
   );
 }
