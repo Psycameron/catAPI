@@ -11,8 +11,9 @@ export default function Breeds() {
   const { breeds } = useBreeds();
 
   const [cats, setCats] = useState(null);
-  const [selectedLimit, setSelectedLimit] = useState(10);
+  console.log(`🚀 ~ Breeds ~ cats:`, cats);
   const [selectedBreedId, setSelectedBreedId] = useState("default");
+  const [selectedLimit, setSelectedLimit] = useState(10);
 
   useEffect(() => {
     async function fetchData() {
