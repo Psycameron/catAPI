@@ -14,11 +14,18 @@ import SearchForm from "@/components/SearchForm/SearchForm";
 import styles from "./layout.module.css";
 import Paper from "@/components/Paper/Paper";
 import { useSearch } from "@/contexts/searchContext";
+import { useEffect } from "react";
 
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
 
   const { query, breeds, breedIds, limit, setQuery, setCats } = useSearch();
+
+  useEffect(() => {
+    if (pathname !== "/search") {
+      setQuery("");
+    }
+  }, [pathname, setQuery]);
 
   async function fetchData() {
     const data = await getCatsByBreed(breedIds, limit);
