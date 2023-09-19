@@ -16,6 +16,7 @@ export default function Voting() {
   const { fetchFavourites } = useFavourites();
 
   const { logs, addLog } = useLogs();
+  console.log(`🚀 ~ Voting ~ logs:`, logs);
 
   useEffect(() => {
     async function fetchCat() {
@@ -45,21 +46,23 @@ export default function Voting() {
   }
 
   return (
-    <div className={styles.imageContainer}>
-      <Image
-        className={styles.image}
-        src={catInfo.url}
-        alt={"cat"}
-        fill={true}
-        sizes="640px"
-        priority
-      />
-      <ReactionsMenu
-        catId={catInfo.id}
-        handleReaction={handleReaction}
-        addLog={addLog}
-      />
+    <>
+      <div className={styles.imageContainer}>
+        <Image
+          className={styles.image}
+          src={catInfo.url}
+          alt={"cat"}
+          fill={true}
+          sizes="640px"
+          priority
+        />
+        <ReactionsMenu
+          catId={catInfo.id}
+          handleReaction={handleReaction}
+          addLog={addLog}
+        />
+      </div>
       <LogsStory logs={logs} />
-    </div>
+    </>
   );
 }

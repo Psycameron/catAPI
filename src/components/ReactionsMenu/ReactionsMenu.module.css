@@ -1,11 +1,13 @@
 .wrapper {
   position: absolute;
-  top: 398px;
-  left: 216px;
+  top: 318px;
+  left: 50%;
 
   display: flex;
 
   border-radius: var(--border-radius-large);
+
+  transform: translateX(-50%);
 }
 
 .button {

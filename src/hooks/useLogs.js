@@ -4,6 +4,7 @@ export default function useLogs() {
   const [logs, setLogs] = useState([]);
 
   function addLog(id, message) {
+    console.log("eto log");
     const log = {
       date: formatTime(new Date()),
       id,

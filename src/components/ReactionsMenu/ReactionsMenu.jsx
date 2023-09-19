@@ -21,7 +21,9 @@ export default function ReactionsMenu({ catId, handleReaction, addLog }) {
       >
         <Like className={styles.icon} />
       </button>
+
       <FavouritesBtn catId={catId} addLog={addLog} />
+
       <button
         className={`${styles.button} ${styles.dislike}`}
         type="button"
