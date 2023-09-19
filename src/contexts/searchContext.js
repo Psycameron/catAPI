@@ -9,6 +9,7 @@ export const useSearch = () => useContext(SearchContext);
 
 export default function SearchProvider({ children }) {
   const [breeds, setBreeds] = useState(null);
+  const [cats, setCats] = useState(null);
   const [query, setQuery] = useState("");
   const [breedIds, setBreedIds] = useState(null);
   const [limit, setLimit] = useState(null);
@@ -24,24 +25,24 @@ export default function SearchProvider({ children }) {
 
   useEffect(() => {
     function searchBreedIds(query) {
-      //   if (!breeds) {
-      //     return null;
-      //   }
+      if (!breeds) {
+        return null;
+      }
 
-      const exactMatches = breeds?.filter(
+      const exactMatches = breeds.filter(
         (breed) => breed.name === query.toLowerCase()
       );
-      const similarMatches = breeds?.filter(
+      const similarMatches = breeds.filter(
         (breed) =>
           breed.name.toLowerCase().includes(query.toLowerCase()) &&
           breed.name !== query.toLowerCase()
       );
 
-      const sortedResults = exactMatches?.concat(similarMatches);
-      const sortedIds = sortedResults?.map((el) => el.id).join();
+      const sortedResults = exactMatches.concat(similarMatches);
+      const sortedIds = sortedResults.map((el) => el.id).join();
 
       setBreedIds(sortedIds);
-      setLimit(sortedResults?.length);
+      setLimit(sortedResults.length);
     }
 
     searchBreedIds(query);
@@ -51,12 +52,14 @@ export default function SearchProvider({ children }) {
     <SearchContext.Provider
       value={{
         query,
+        cats,
         breeds,
         breedIds,
         limit,
         setQuery,
         setBreedIds,
         setLimit,
+        setCats,
       }}
     >
       {children}

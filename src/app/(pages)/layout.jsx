@@ -5,9 +5,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
-import { getAllBreeds } from "@/utils/api";
+import { getCatsByBreed } from "@/utils/api";
 import AdditionalNav from "@/components/AdditionalNav/AdditionalNav";
 import BackBtn from "@/components/BackBtn/BackBtn";
 import SearchForm from "@/components/SearchForm/SearchForm";
@@ -19,48 +18,13 @@ import { useSearch } from "@/contexts/searchContext";
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
 
-  const { query, breeds, breedIds, limit, setQuery } = useSearch();
-  console.log(`🚀 ~ PagesLayout ~ query:`, query);
-  console.log(`🚀 ~ PagesLayout ~ breedIds:`, breedIds);
+  const { query, breeds, breedIds, limit, setQuery, setCats } = useSearch();
 
-  // const [breeds, setBreeds] = useState(null);
-  // const [query, setQuery] = useState("");
-  // const [breedIds, setBreedIds] = useState(null);
-  // const [limit, setLimit] = useState(null);
+  async function fetchData() {
+    const data = await getCatsByBreed(breedIds, limit);
 
-  // useEffect(() => {
-  //   async function loadBreeds() {
-  //     const data = await getAllBreeds();
-  //     setBreeds(data);
-  //   }
-
-  //   loadBreeds();
-  // }, []);
-
-  // useEffect(() => {
-  //   function searchBreedIds(query) {
-  //     if (!breeds) {
-  //       return null;
-  //     }
-
-  //     const exactMatches = breeds.filter(
-  //       (breed) => breed.name === query.toLowerCase()
-  //     );
-  //     const similarMatches = breeds.filter(
-  //       (breed) =>
-  //         breed.name.toLowerCase().includes(query.toLowerCase()) &&
-  //         breed.name !== query.toLowerCase()
-  //     );
-
-  //     const sortedResults = exactMatches.concat(similarMatches);
-  //     const sortedIds = sortedResults.map((el) => el.id).join();
-
-  //     setBreedIds(sortedIds);
-  //     setLimit(sortedResults.length);
-  //   }
-
-  //   searchBreedIds(query);
-  // }, [breeds, query]);
+    setCats(data);
+  }
 
   function handleChange(e) {
     setQuery(e.currentTarget.value);
@@ -72,6 +36,8 @@ export default function PagesLayout({ children }) {
     if (query.trim() === "") {
       return;
     }
+
+    fetchData();
   }
 
   if (!breeds) {

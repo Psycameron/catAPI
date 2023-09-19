@@ -1,22 +1,17 @@
 "use client";
 
+import GridPattern from "@/components/GridPattern/GridPattern";
 import { useSearch } from "@/contexts/searchContext";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function Search() {
-  const router = useRouter();
-  const { query, breeds, breedIds, limit, setQuery, setBreedIds, setLimit } =
-    useSearch();
-  console.log(`🚀 ~ Search ~ query:`, query);
-  console.log(`🚀 ~ Search ~ breedIds:`, breedIds);
-  console.log(`🚀 ~ Search ~ breeds:`, breeds);
+  const { query, cats, setQuery } = useSearch();
 
   return (
     <div>
       <p>
         Search results for: <span>{query}</span>
       </p>
+      <GridPattern cats={cats} />
     </div>
   );
 }

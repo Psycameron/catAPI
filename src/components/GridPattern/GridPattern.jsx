@@ -20,7 +20,7 @@ export default function GridPattern({
 
   return (
     <ul className={styles.list}>
-      {pathname === "/breeds" &&
+      {(pathname === "/breeds" || pathname === "/search") &&
         cats.map(({ url, id, breeds }) => (
           <li className={styles.item} key={id}>
             <div className={styles.imageContainer}>
@@ -33,7 +33,7 @@ export default function GridPattern({
                 priority
               />
             </div>
-            <Link className={styles.link} href={`/breeds/${selectedBreedId}`}>
+            <Link className={styles.link} href={`/breeds/${breeds[0].id}`}>
               <p className={styles.breedTitle}>{breeds[0].name}</p>
             </Link>
           </li>
