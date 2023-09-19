@@ -2,27 +2,19 @@
 
 import GalleryForm from "@/components/GalleryForm/GalleryForm";
 import GridPattern from "@/components/GridPattern/GridPattern";
-import { getAllBreeds, getCatsByBreed, getCatsForGallery } from "@/utils/api";
-import { useEffect, useState } from "react";
+import useBreeds from "@/hooks/useBreeds";
+import { getCatsForGallery } from "@/utils/api";
+import { useState } from "react";
 
 export default function Gallery() {
+  const { breeds } = useBreeds();
+  
   const [cats, setCats] = useState(null);
-
-  const [breeds, setBreeds] = useState(null);
 
   const [selectedOrder, setSelectedOrder] = useState("RANDOM");
   const [selectedType, setSelectedType] = useState("gif,png,jpeg");
   const [selectedBreedId, setSelectedBreedId] = useState("default");
   const [selectedLimit, setSelectedLimit] = useState(10);
-  
-  useEffect(() => {
-    async function fetchDataBreeds() {
-      const data = await getAllBreeds();
-      setBreeds(data);
-    }
-
-    fetchDataBreeds();
-  }, []);
 
   if (!breeds) {
     return;

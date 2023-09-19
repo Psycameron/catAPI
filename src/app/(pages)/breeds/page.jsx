@@ -1,26 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import { getAllBreeds, getCatsByBreed } from "@/utils/api";
+import useBreeds from "@/hooks/useBreeds";
+import { getCatsByBreed } from "@/utils/api";
 
 import BreedsFilter from "@/components/BreedsFilter/BreedsFilter";
 import GridPattern from "@/components/GridPattern/GridPattern";
 
 export default function Breeds() {
+  const { breeds } = useBreeds();
+
   const [cats, setCats] = useState(null);
-  const [breeds, setBreeds] = useState(null);
   const [selectedLimit, setSelectedLimit] = useState(10);
   const [selectedBreedId, setSelectedBreedId] = useState("default");
-
-  useEffect(() => {
-    async function fetchDataBreeds() {
-      const data = await getAllBreeds();
-      setBreeds(data);
-    }
-
-    fetchDataBreeds();
-  }, []);
 
   useEffect(() => {
     async function fetchData() {

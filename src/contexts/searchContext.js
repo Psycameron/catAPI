@@ -1,27 +1,19 @@
 "use client";
 
-import { getAllBreeds } from "@/utils/api";
 import { createContext, useContext, useEffect, useState } from "react";
+import useBreeds from "@/hooks/useBreeds";
 
 const SearchContext = createContext();
 
 export const useSearch = () => useContext(SearchContext);
 
 export default function SearchProvider({ children }) {
-  const [breeds, setBreeds] = useState(null);
+  const { breeds } = useBreeds();
+
   const [cats, setCats] = useState(null);
   const [query, setQuery] = useState("");
   const [breedIds, setBreedIds] = useState(null);
   const [limit, setLimit] = useState(null);
-
-  useEffect(() => {
-    async function loadBreeds() {
-      const data = await getAllBreeds();
-      setBreeds(data);
-    }
-
-    loadBreeds();
-  }, []);
 
   useEffect(() => {
     function searchBreedIds(query) {
