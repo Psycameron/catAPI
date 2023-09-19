@@ -1,11 +1,13 @@
 .form {
+  position: absolute;
+  top: 19px;
+  right: 20px;
   margin-bottom: 20px;
 }
 
 .select {
-  height: 40px;
   margin-right: 10px;
-  padding: 6px 10px;
+  padding: 5.5px 8px;
 
   font-size: var(--font-size-medium);
   color: var(--text-secondary-color);
@@ -22,7 +24,11 @@
 }
 
 .breeds {
-  width: 226px;
+  width: 216px;
+}
+
+.limit {
+  width: 111px;
 }
 
 .button {

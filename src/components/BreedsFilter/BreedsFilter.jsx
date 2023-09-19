@@ -33,7 +33,7 @@ export default function BreedsFilter({
       </select>
 
       <select
-        className={styles.select}
+        className={`${styles.select} ${styles.limit}`}
         name="limits"
         value={selectedLimit}
         onChange={handleSelectChange}
