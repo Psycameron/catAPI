@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function Gallery() {
   const { breeds } = useBreeds();
-  
+
   const [cats, setCats] = useState(null);
 
   const [selectedOrder, setSelectedOrder] = useState("RANDOM");
@@ -35,7 +35,7 @@ export default function Gallery() {
     }
   }
 
-  function onSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
 
     async function fetchData() {
@@ -51,6 +51,12 @@ export default function Gallery() {
     fetchData();
   }
 
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  }
+
   return (
     <>
       <GalleryForm
@@ -60,7 +66,8 @@ export default function Gallery() {
         selectedType={selectedType}
         selectedBreedId={selectedBreedId}
         selectedLimit={selectedLimit}
-        onSubmit={onSubmit}
+        handleSubmit={handleSubmit}
+        handleKeyPress={handleKeyPress}
       />
       <GridPattern cats={cats} />
     </>

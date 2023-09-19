@@ -16,11 +16,16 @@ export default function GalleryForm({
   selectedType,
   selectedBreedId,
   selectedLimit,
-  onSubmit,
+  handleSubmit,
+  handleKeyPress,
 }) {
   return (
     <div>
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit}
+        onKeyDown={handleKeyPress}
+      >
         <div className={styles.wrapper}>
           <label className={styles.label} htmlFor="order">
             ORDER
