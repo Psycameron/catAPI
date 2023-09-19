@@ -11,6 +11,7 @@ export default function BreedsFilter({
   selectedLimit,
   selectedBreedId,
   handleSelectChange,
+  handleSort,
 }) {
   return (
     <form className={styles.form}>
@@ -30,6 +31,7 @@ export default function BreedsFilter({
           );
         })}
       </select>
+
       <select
         className={styles.select}
         name="limits"
@@ -44,10 +46,19 @@ export default function BreedsFilter({
           );
         })}
       </select>
-      <button className={styles.button} type="button">
+
+      <button
+        className={styles.button}
+        type="button"
+        onClick={() => handleSort("ascending")}
+      >
         <Sort className={styles.icon} />
       </button>
-      <button className={styles.button} type="button">
+      <button
+        className={styles.button}
+        type="button"
+        onClick={() => handleSort("descending")}
+      >
         <SortRevert className={styles.icon} />
       </button>
     </form>

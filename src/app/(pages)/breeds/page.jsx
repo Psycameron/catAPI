@@ -25,6 +25,18 @@ export default function Breeds() {
     fetchData();
   }, [selectedBreedId, selectedLimit]);
 
+  function handleSort(sortedType) {
+    const sortedArray = [...cats];
+
+    if (sortedType === "ascending") {
+      sortedArray.sort((a, b) => a.id.localeCompare(b.id));
+    } else if (sortedType === "descending") {
+      sortedArray.sort((a, b) => b.id.localeCompare(a.id));
+    }
+
+    setCats(sortedArray);
+  }
+
   if (!breeds) {
     return;
   }
@@ -45,6 +57,7 @@ export default function Breeds() {
         selectedLimit={selectedLimit}
         selectedBreedId={selectedBreedId}
         handleSelectChange={handleSelectChange}
+        handleSort={handleSort}
       />
       <GridPattern cats={cats} selectedBreedId={selectedBreedId} />
     </>
