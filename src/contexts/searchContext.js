@@ -13,7 +13,6 @@ export default function SearchProvider({ children }) {
   const [cats, setCats] = useState(null);
   const [query, setQuery] = useState("");
   const [breedIds, setBreedIds] = useState(null);
-  const [limit, setLimit] = useState(null);
 
   useEffect(() => {
     function searchBreedIds(query) {
@@ -34,7 +33,6 @@ export default function SearchProvider({ children }) {
       const sortedIds = sortedResults.map((el) => el.id).join();
 
       setBreedIds(sortedIds);
-      setLimit(sortedResults.length);
     }
 
     searchBreedIds(query);
@@ -47,10 +45,8 @@ export default function SearchProvider({ children }) {
         cats,
         breeds,
         breedIds,
-        limit,
         setQuery,
         setBreedIds,
-        setLimit,
         setCats,
       }}
     >

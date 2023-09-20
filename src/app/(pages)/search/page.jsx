@@ -6,7 +6,7 @@ import { useSearch } from "@/contexts/searchContext";
 import styles from "./page.module.css";
 
 export default function Search() {
-  const { query, cats, setQuery } = useSearch();
+  const { query, cats } = useSearch();
 
   return (
     <div>

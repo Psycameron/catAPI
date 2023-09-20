@@ -27,10 +27,10 @@ export async function getCatsForGallery(order, type, breedId, limit) {
   }
 }
 
-export async function getCatsByBreed(id, limit) {
+export async function getCatsByBreed(id, limit, page = 1) {
   try {
     const response = await axios.get(
-      `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}`
+      `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}&page=${page}`
     );
     return response.data;
   } catch (error) {

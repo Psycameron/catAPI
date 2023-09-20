@@ -16,6 +16,8 @@ import Paper from "@/components/Paper/Paper";
 import { useSearch } from "@/contexts/searchContext";
 import { useEffect } from "react";
 
+const LIMIT = 10;
+
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
 
@@ -28,7 +30,7 @@ export default function PagesLayout({ children }) {
   }, [pathname, setQuery]);
 
   async function fetchData() {
-    const data = await getCatsByBreed(breedIds, limit);
+    const data = await getCatsByBreed(breedIds, LIMIT);
 
     setCats(data);
   }
