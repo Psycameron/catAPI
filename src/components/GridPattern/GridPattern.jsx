@@ -6,12 +6,7 @@ import styles from "./GridPattern.module.css";
 import Unfav from "public/images/svg/unfav.svg";
 import FavouritesBtn from "../FavouritesBtn/FavouritesBtn";
 
-export default function GridPattern({
-  cats,
-  selectedBreedId,
-  deleteFromFavourites,
-  addLog,
-}) {
+export default function GridPattern({ cats, deleteFromFavourites, addLog }) {
   const pathname = usePathname();
 
   if (!cats) {

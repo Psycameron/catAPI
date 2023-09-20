@@ -1,0 +1,10 @@
+.p {
+  margin-bottom: 20px;
+
+  color: var(--text-secondary-color);
+}
+
+.span {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-main-color);
+}
