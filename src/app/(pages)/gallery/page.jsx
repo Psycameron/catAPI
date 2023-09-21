@@ -3,22 +3,34 @@
 import GalleryForm from "@/components/GalleryForm/GalleryForm";
 import GridPattern from "@/components/GridPattern/GridPattern";
 import useBreeds from "@/hooks/useBreeds";
+import useFirstFetchData from "@/hooks/useFirstFetchData";
 import { getCatsForGallery } from "@/utils/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Gallery() {
-  const { breeds } = useBreeds();
+  const { breeds, allBreedIds } = useBreeds();
+  const { firstCats } = useFirstFetchData();
 
   const [cats, setCats] = useState(null);
 
   const [selectedOrder, setSelectedOrder] = useState("RANDOM");
   const [selectedType, setSelectedType] = useState("gif,png,jpeg");
-  const [selectedBreedId, setSelectedBreedId] = useState("default");
+  const [selectedBreedId, setSelectedBreedId] = useState(allBreedIds);
   const [selectedLimit, setSelectedLimit] = useState(10);
 
-  if (!breeds) {
-    return;
-  }
+  useEffect(() => {
+    if (!firstCats) {
+      return;
+    }
+    setCats(firstCats);
+  }, [firstCats]);
+
+  useEffect(() => {
+    if (!allBreedIds) {
+      return;
+    }
+    setSelectedBreedId(allBreedIds);
+  }, [allBreedIds]);
 
   function handleSelectChange(e) {
     if (e.target.name === "order") {
@@ -57,10 +69,15 @@ export default function Gallery() {
     }
   }
 
+  if (!breeds) {
+    return;
+  }
+
   return (
     <>
       <GalleryForm
         breeds={breeds}
+        allBreedIds={allBreedIds}
         handleSelectChange={handleSelectChange}
         selectedOrder={selectedOrder}
         selectedType={selectedType}

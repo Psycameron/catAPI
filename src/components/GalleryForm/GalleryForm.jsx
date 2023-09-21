@@ -11,6 +11,7 @@ const LIMITS_VALUE = [5, 10, 15, 20];
 
 export default function GalleryForm({
   breeds,
+  allBreedIds,
   handleSelectChange,
   selectedOrder,
   selectedType,
@@ -79,7 +80,7 @@ export default function GalleryForm({
             value={selectedBreedId}
             onChange={handleSelectChange}
           >
-            <option value="default">All breeds</option>
+            <option value={allBreedIds}>All breeds</option>
             {breeds.map(({ id, name }) => {
               return (
                 <option key={id} value={id}>
