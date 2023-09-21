@@ -6,14 +6,21 @@ import { getCatsByBreed } from "@/utils/api";
 
 import BreedsFilter from "@/components/BreedsFilter/BreedsFilter";
 import GridPattern from "@/components/GridPattern/GridPattern";
+import useFirstFetchData from "@/hooks/useFirstFetchData";
 
 export default function Breeds() {
-  const { breeds } = useBreeds();
+  const { breeds, allBreedIds } = useBreeds();
+  const { firstCats, selectedLimit, setSelectedLimit } = useFirstFetchData();
 
   const [cats, setCats] = useState(null);
-  console.log(`🚀 ~ Breeds ~ cats:`, cats);
-  const [selectedBreedId, setSelectedBreedId] = useState("default");
-  const [selectedLimit, setSelectedLimit] = useState(10);
+  const [selectedBreedId, setSelectedBreedId] = useState(allBreedIds);
+
+  useEffect(() => {
+    if (!firstCats) {
+      return;
+    }
+    setCats(firstCats);
+  }, [firstCats]);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,7 +30,7 @@ export default function Breeds() {
     }
 
     fetchData();
-  }, [selectedBreedId, selectedLimit]);
+  }, [selectedBreedId, selectedLimit, setCats]);
 
   function handleSort(sortedType) {
     const sortedArray = [...cats];
@@ -54,6 +61,7 @@ export default function Breeds() {
     <>
       <BreedsFilter
         breeds={breeds}
+        allBreedIds={allBreedIds}
         selectedLimit={selectedLimit}
         selectedBreedId={selectedBreedId}
         handleSelectChange={handleSelectChange}

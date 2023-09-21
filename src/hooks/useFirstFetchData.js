@@ -5,20 +5,22 @@ import { usePathname } from "next/navigation";
 import { getCatsWithBreed } from "@/utils/api";
 
 export default function useFirstFetchData() {
-  const [cats, setCats] = useState(null);
   const pathname = usePathname();
+
+  const [firstCats, setFirstCats] = useState(null);
+  const [selectedLimit, setSelectedLimit] = useState(10);
 
   useEffect(() => {
     if (pathname === "/breeds" || pathname === "/gallery") {
       async function fetchData() {
-        const data = await getCatsWithBreed();
+        const data = await getCatsWithBreed(selectedLimit);
 
-        setCats(data);
+        setFirstCats(data);
       }
 
       fetchData();
     }
-  }, [pathname, setCats]);
+  }, [pathname, selectedLimit, setFirstCats]);
 
-  return { cats, setCats };
+  return { firstCats, selectedLimit, setSelectedLimit };
 }

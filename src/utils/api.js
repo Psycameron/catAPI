@@ -27,14 +27,25 @@ export async function getCatsForGallery(order, type, breedId, limit) {
   }
 }
 
-export async function getCatsByBreed(id, limit, page = 1) {
+export async function getCatsByBreed(breedId, limit, page = 1) {
   try {
     const response = await axios.get(
-      `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${id}&page=${page}`
+      `/images/search?api_key=${API_KEY}&limit=${limit}&breed_ids=${breedId}&page=${page}`
     );
     return response.data;
   } catch (error) {
     console.error("Error fetching breeds:", error);
+  }
+}
+
+export async function getCatsWithBreed(limit = 10, hasBreeds = true) {
+  try {
+    const response = await axios.get(
+      `/images/search/?api_key=${API_KEY}&limit=${limit}&has_breeds=${hasBreeds}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching cats:", error);
   }
 }
 

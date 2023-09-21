@@ -21,7 +21,7 @@ const LIMIT = 10;
 export default function PagesLayout({ children }) {
   const pathname = usePathname();
 
-  const { query, breeds, breedIds, limit, setQuery, setCats } = useSearch();
+  const { query, breeds, breedIds, setQuery, setCats } = useSearch();
 
   useEffect(() => {
     if (pathname !== "/search") {
