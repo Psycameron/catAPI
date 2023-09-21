@@ -41,7 +41,7 @@ export default function GridPattern({ cats, deleteFromFavourites, addLog }) {
               <Image
                 className={styles.image}
                 src={url}
-                alt={breeds[0].name}
+                alt={breeds[0]?.name || id}
                 fill={true}
                 sizes="380px"
               />

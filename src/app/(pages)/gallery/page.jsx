@@ -3,13 +3,11 @@
 import GalleryForm from "@/components/GalleryForm/GalleryForm";
 import GridPattern from "@/components/GridPattern/GridPattern";
 import useBreeds from "@/hooks/useBreeds";
-import useFirstFetchData from "@/hooks/useFirstFetchData";
-import { getCatsForGallery } from "@/utils/api";
+import { getCatsForGallery, getCatsWithBreed } from "@/utils/api";
 import { useEffect, useState } from "react";
 
 export default function Gallery() {
   const { breeds, allBreedIds } = useBreeds();
-  const { firstCats } = useFirstFetchData();
 
   const [cats, setCats] = useState(null);
 
@@ -19,18 +17,22 @@ export default function Gallery() {
   const [selectedLimit, setSelectedLimit] = useState(10);
 
   useEffect(() => {
-    if (!firstCats) {
-      return;
+    if (!cats) {
+      async function fetchData() {
+        const data = await getCatsWithBreed(selectedLimit);
+
+        setCats(data);
+      }
+
+      fetchData();
     }
-    setCats(firstCats);
-  }, [firstCats]);
+  }, [cats, selectedLimit]);
 
   useEffect(() => {
-    if (!allBreedIds) {
-      return;
+    if (breeds) {
+      setSelectedBreedId(allBreedIds);
     }
-    setSelectedBreedId(allBreedIds);
-  }, [allBreedIds]);
+  }, [allBreedIds, breeds]);
 
   function handleSelectChange(e) {
     if (e.target.name === "order") {
@@ -49,6 +51,20 @@ export default function Gallery() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (selectedBreedId === allBreedIds) {
+      async function fetchData() {
+        const data = await getCatsForGallery(
+          selectedOrder,
+          selectedType,
+          "",
+          selectedLimit
+        );
+        setCats(data);
+      }
+
+      fetchData();
+    }
 
     async function fetchData() {
       const data = await getCatsForGallery(
