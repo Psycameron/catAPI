@@ -29,12 +29,6 @@ export default function PagesLayout({ children }) {
     }
   }, [pathname, setQuery]);
 
-  async function fetchData() {
-    const data = await getCatsByBreed(breedIds, LIMIT);
-
-    setCats(data);
-  }
-
   function handleChange(e) {
     setQuery(e.currentTarget.value);
   }
@@ -46,7 +40,15 @@ export default function PagesLayout({ children }) {
       return;
     }
 
-    fetchData();
+    if (breedIds) {
+      async function fetchData() {
+        const data = await getCatsByBreed(breedIds, LIMIT);
+        setCats(data);
+      }
+      fetchData();
+    } else {
+      setCats([]);
+    }
   }
 
   if (!breeds) {

@@ -21,18 +21,22 @@ export default function SearchProvider({ children }) {
       }
 
       const exactMatches = breeds.filter(
-        (breed) => breed.name === query.toLowerCase()
+        (breed) => breed.name.toLowerCase() === query.toLowerCase().trim()
       );
       const similarMatches = breeds.filter(
         (breed) =>
-          breed.name.toLowerCase().includes(query.toLowerCase()) &&
-          breed.name !== query.toLowerCase()
+          breed.name.toLowerCase().includes(query.toLowerCase().trim()) &&
+          breed.name !== query.toLowerCase().trim()
       );
 
       const sortedResults = exactMatches.concat(similarMatches);
       const sortedIds = sortedResults.map((el) => el.id).join();
 
-      setBreedIds(sortedIds);
+      if (sortedIds.length === 0) {
+        setBreedIds(null);
+      } else {
+        setBreedIds(sortedIds);
+      }
     }
 
     searchBreedIds(query);
