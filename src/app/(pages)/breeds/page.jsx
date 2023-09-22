@@ -6,14 +6,16 @@ import { getCatsByBreed } from "@/utils/api";
 
 import BreedsFilter from "@/components/BreedsFilter/BreedsFilter";
 import GridPattern from "@/components/GridPattern/GridPattern";
+import NoItemsFound from "@/components/NoItemsFound/NoItemsFound";
+import Loader from "@/components/Loader/Loader";
 
 export default function Breeds() {
   const { breeds, allBreedIds } = useBreeds();
 
   const [cats, setCats] = useState(null);
   const [selectedBreedId, setSelectedBreedId] = useState(allBreedIds);
-  console.log(`🚀 ~ Breeds ~ selectedBreedId:`, selectedBreedId);
   const [selectedLimit, setSelectedLimit] = useState(10);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (breeds) {
@@ -22,10 +24,12 @@ export default function Breeds() {
   }, [allBreedIds, breeds]);
 
   useEffect(() => {
+    setIsLoading(true);
     async function fetchData() {
       const data = await getCatsByBreed(selectedBreedId, selectedLimit);
 
       setCats(data);
+      setIsLoading(false);
     }
 
     fetchData();
@@ -66,7 +70,11 @@ export default function Breeds() {
         handleSelectChange={handleSelectChange}
         handleSort={handleSort}
       />
-      <GridPattern cats={cats} selectedBreedId={selectedBreedId} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <GridPattern cats={cats} selectedBreedId={selectedBreedId} />
+      )}
     </>
   );
 }

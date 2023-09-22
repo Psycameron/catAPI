@@ -2,6 +2,7 @@
 
 import GalleryForm from "@/components/GalleryForm/GalleryForm";
 import GridPattern from "@/components/GridPattern/GridPattern";
+import Loader from "@/components/Loader/Loader";
 import useBreeds from "@/hooks/useBreeds";
 import { getCatsForGallery, getCatsWithBreed } from "@/utils/api";
 import { useEffect, useState } from "react";
@@ -16,23 +17,27 @@ export default function Gallery() {
   const [selectedBreedId, setSelectedBreedId] = useState(allBreedIds);
   const [selectedLimit, setSelectedLimit] = useState(10);
 
-  useEffect(() => {
-    if (!cats) {
-      async function fetchData() {
-        const data = await getCatsWithBreed(selectedLimit);
-
-        setCats(data);
-      }
-
-      fetchData();
-    }
-  }, [cats, selectedLimit]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (breeds) {
       setSelectedBreedId(allBreedIds);
     }
   }, [allBreedIds, breeds]);
+
+  useEffect(() => {
+    if (!cats) {
+      setIsLoading(true);
+      async function fetchData() {
+        const data = await getCatsWithBreed(selectedLimit);
+
+        setCats(data);
+        setIsLoading(false);
+      }
+
+      fetchData();
+    }
+  }, [cats, selectedLimit]);
 
   function handleSelectChange(e) {
     if (e.target.name === "order") {
@@ -53,6 +58,8 @@ export default function Gallery() {
     e.preventDefault();
 
     if (selectedBreedId === allBreedIds) {
+      setIsLoading(true);
+
       async function fetchData() {
         const data = await getCatsForGallery(
           selectedOrder,
@@ -61,22 +68,26 @@ export default function Gallery() {
           selectedLimit
         );
         setCats(data);
+        setIsLoading(false);
+      }
+
+      fetchData();
+    } else {
+      setIsLoading(true);
+
+      async function fetchData() {
+        const data = await getCatsForGallery(
+          selectedOrder,
+          selectedType,
+          selectedBreedId,
+          selectedLimit
+        );
+        setCats(data);
+        setIsLoading(false);
       }
 
       fetchData();
     }
-
-    async function fetchData() {
-      const data = await getCatsForGallery(
-        selectedOrder,
-        selectedType,
-        selectedBreedId,
-        selectedLimit
-      );
-      setCats(data);
-    }
-
-    fetchData();
   }
 
   function handleKeyPress(e) {
@@ -102,7 +113,7 @@ export default function Gallery() {
         handleSubmit={handleSubmit}
         handleKeyPress={handleKeyPress}
       />
-      <GridPattern cats={cats} />
+      {isLoading ? <Loader /> : <GridPattern cats={cats} />}
     </>
   );
 }
