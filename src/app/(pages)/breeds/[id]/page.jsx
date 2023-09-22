@@ -5,14 +5,18 @@ import { getCatInfoByBreed, getCatsByBreed } from "@/utils/api";
 
 import styles from "./page.module.css";
 import Slider from "@/components/Slider/Slider";
+import Loader from "@/components/Loader/Loader";
 
 const LIMIT_SLIDER_IMAGES = 5;
 
 export default function PetInfo({ params: { id } }) {
   const [breedInfo, setBreedInfo] = useState(null);
   const [breedImages, setBreedImages] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(`🚀 ~ PetInfo ~ isLoading:`, isLoading);
 
   useEffect(() => {
+    setIsLoading(true);
     async function fetchDataBreed() {
       const data = await getCatInfoByBreed(id);
       setBreedInfo(data);
@@ -25,6 +29,7 @@ export default function PetInfo({ params: { id } }) {
         url,
       }));
       setBreedImages(dataImages);
+      setIsLoading(false);
     }
 
     fetchDataBreed();
@@ -39,10 +44,14 @@ export default function PetInfo({ params: { id } }) {
     breedInfo;
 
   return (
-    <div>
-      <div className={styles.imageContainer}>
-        <Slider images={breedImages} />
-      </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={styles.imageContainer}>
+          <Slider images={breedImages} />
+        </div>
+      )}
 
       <div className={styles.container}>
         <h4 className={styles.name}>{name}</h4>
@@ -68,6 +77,6 @@ export default function PetInfo({ params: { id } }) {
           </div>
         </ul>
       </div>
-    </div>
+    </>
   );
 }
