@@ -9,59 +9,68 @@ import ReactionsMenu from "@/components/ReactionsMenu/ReactionsMenu";
 import { addImageReaction, getRandomCat } from "@/utils/api";
 
 import styles from "./page.module.css";
+import Loader from "@/components/Loader/Loader";
 
 export default function Voting() {
-  const [catInfo, setCatInfo] = useState(null);
-
   const { fetchFavourites } = useFavourites();
-
   const { logs, addLog } = useLogs();
-  console.log(`🚀 ~ Voting ~ logs:`, logs);
+
+  const [catInfo, setCatInfo] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  console.log(`🚀 ~ Voting ~ isLoading:`, isLoading);
 
   useEffect(() => {
+    setIsLoading(true);
     async function fetchCat() {
       const data = await getRandomCat();
       setCatInfo(data);
+      setIsLoading(false);
     }
 
     fetchCat();
     fetchFavourites();
   }, [fetchFavourites]);
 
-  if (!catInfo) {
-    return;
-  }
-
   async function loadNewCatImage() {
     const newCatInfo = await getRandomCat();
     setCatInfo(newCatInfo);
+    setIsLoading(false);
   }
 
   async function handleReaction(id, value) {
     const data = { image_id: id, value };
+    setIsLoading(true);
 
     await addImageReaction(data);
 
     loadNewCatImage();
   }
 
+  if (!catInfo) {
+    return;
+  }
+
   return (
     <>
-      <div className={styles.imageContainer}>
-        <Image
-          className={styles.image}
-          src={catInfo.url}
-          alt={"cat"}
-          fill={true}
-          sizes="640px"
-          priority
-        />
-        <ReactionsMenu
-          catId={catInfo.id}
-          handleReaction={handleReaction}
-          addLog={addLog}
-        />
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={styles.imageContainer}>
+          <Image
+            className={styles.image}
+            src={catInfo.url}
+            alt={"cat"}
+            fill={true}
+            sizes="640px"
+            priority
+          />
+        </div>
+      )}
+      <ReactionsMenu
+        catId={catInfo.id}
+        handleReaction={handleReaction}
+        addLog={addLog}
+      />
       <LogsStory logs={logs} />
     </>
   );
