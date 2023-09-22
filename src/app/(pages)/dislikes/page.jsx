@@ -1,19 +1,31 @@
 "use client";
 
 import GridPattern from "@/components/GridPattern/GridPattern";
+import Loader from "@/components/Loader/Loader";
+import NoItemsFound from "@/components/NoItemsFound/NoItemsFound";
 import useVotes from "@/hooks/useVotes";
 import { useEffect } from "react";
 
 export default function Dislikes() {
-  const { dislikesCats, fetchAllVotes } = useVotes();
+  const { dislikesCats, isLoading, fetchAllVotes } = useVotes();
 
   useEffect(() => {
     fetchAllVotes();
   }, [fetchAllVotes]);
 
   return (
-    <div>
-      <GridPattern cats={dislikesCats} />
-    </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {!dislikesCats ? (
+            <NoItemsFound />
+          ) : (
+            <GridPattern cats={dislikesCats} />
+          )}
+        </>
+      )}
+    </>
   );
 }
