@@ -6,7 +6,6 @@ import { getCatsByBreed } from "@/utils/api";
 
 import BreedsFilter from "@/components/BreedsFilter/BreedsFilter";
 import GridPattern from "@/components/GridPattern/GridPattern";
-import NoItemsFound from "@/components/NoItemsFound/NoItemsFound";
 import Loader from "@/components/Loader/Loader";
 
 export default function Breeds() {

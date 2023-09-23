@@ -17,7 +17,6 @@ export default function Voting() {
 
   const [catInfo, setCatInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(`🚀 ~ Voting ~ isLoading:`, isLoading);
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,8 +26,8 @@ export default function Voting() {
       setIsLoading(false);
     }
 
-    fetchCat();
     fetchFavourites();
+    fetchCat();
   }, [fetchFavourites]);
 
   async function loadNewCatImage() {
