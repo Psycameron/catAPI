@@ -46,7 +46,7 @@ export default function GridPattern({ cats, deleteFromFavourites, addLog }) {
                 sizes="380px"
               />
             </div>
-            {/* <FavouritesBtn catId={id} /> */}
+            <FavouritesBtn catId={id} addLog={addLog} />
           </li>
         ))}
 

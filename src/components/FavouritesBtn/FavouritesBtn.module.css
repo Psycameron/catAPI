@@ -15,9 +15,40 @@
   transition: background-color 250ms var(--timing-function);
 }
 
+.button.reuse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 40px;
+  height: 40px;
+
+  background-color: var(--white-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  transition: background-color 250ms var(--timing-function);
+}
+
+.button.reuse:hover {
+  background-color: var(--primary);
+}
+
+.button.reuse:hover .icon.reuse {
+  fill: var(--white-color);
+}
+
 .icon {
   height: 30px;
   width: 30px;
+}
+
+.icon.reuse {
+  height: 20px;
+  width: 20px;
+
+  fill: var(--primary);
+  transition: fill 250ms var(--timing-function);
 }
 
 .fav {
@@ -29,8 +60,8 @@
   fill: var(--white-color);
 }
 
-.active .button {
-  background-color: var(--primary);
+.active .unfav.reuse {
+  fill: var(--primary);
 }
 
 .button:hover {
