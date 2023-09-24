@@ -5,10 +5,8 @@ import Unfav from "public/images/svg/unfav.svg";
 import { usePathname } from "next/navigation";
 
 export default function FavouritesBtn({ catId, addLog }) {
-  console.log(`🚀 ~ FavouritesBtn ~ className:`, styles.button);
   const pathname = usePathname();
   const reuse = pathname === "/gallery" || pathname === "favourites";
-  console.log(`🚀 ~ FavouritesBtn ~ reuse:`, reuse);
 
   const { favouritesCats, addToFavourites, deleteFromFavourites } =
     useFavourites();

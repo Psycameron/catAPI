@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import useFavourites from "@/hooks/useFavourites";
 import useLogs from "@/hooks/useLogs";
-import { getFavourites } from "@/utils/api";
 
 import LogsStory from "@/components/LogsStory/LogsStory";
 import GridPattern from "@/components/GridPattern/GridPattern";
@@ -11,7 +10,7 @@ import Loader from "@/components/Loader/Loader";
 import NoItemsFound from "@/components/NoItemsFound/NoItemsFound";
 
 export default function Favourites() {
-  const { favouritesCats, deleteFromFavourites, setFavouritesCats } =
+  const { favouritesCats, fetchFavourites, deleteFromFavourites } =
     useFavourites();
   const { logs, addLog } = useLogs();
 
@@ -19,15 +18,13 @@ export default function Favourites() {
 
   useEffect(() => {
     setIsLoading(true);
-    async function fetchData() {
-      const data = await getFavourites();
-
-      setFavouritesCats(data);
+    async function loadFavourites() {
+      await fetchFavourites();
       setIsLoading(false);
     }
 
-    fetchData();
-  }, [setFavouritesCats]);
+    loadFavourites();
+  }, [fetchFavourites]);
 
   return (
     <>
