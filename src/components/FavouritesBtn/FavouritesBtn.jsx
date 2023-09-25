@@ -3,17 +3,40 @@ import styles from "./FavouritesBtn.module.css";
 import Fav from "public/images/svg/fav.svg";
 import Unfav from "public/images/svg/unfav.svg";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function FavouritesBtn({ catId, addLog }) {
   const pathname = usePathname();
-  const reuse = pathname === "/gallery" || pathname === "favourites";
+  const reuse = pathname === "/gallery" || pathname === "/favourites";
+  const [isFavourites, setIsFavourites] = useState(false);
+  const [catForDelete, setCatForDelete] = useState(null);
+  // let isFavourites = [];
+  // let catForDelete;
 
-  const { favouritesCats, addToFavourites, deleteFromFavourites } =
-    useFavourites();
+  const {
+    favouritesCats,
+    fetchFavourites,
+    addToFavourites,
+    deleteFromFavourites,
+  } = useFavourites();
 
-  const isFavourites = favouritesCats.map((el) => el.image_id).includes(catId);
+  useEffect(() => {
+    async function loadFavourites() {
+      await fetchFavourites();
+    }
 
-  const catForDelete = favouritesCats.filter((el) => el.image_id === catId);
+    loadFavourites();
+  }, [fetchFavourites]);
+
+  useEffect(() => {
+    if (pathname === "/favourites") {
+      setIsFavourites(favouritesCats?.map((el) => el.id).includes(catId));
+      setCatForDelete(favouritesCats?.filter((el) => el.id === catId));
+    } else {
+      setIsFavourites(favouritesCats?.map((el) => el.image_id).includes(catId));
+      setCatForDelete(favouritesCats?.filter((el) => el.image_id === catId));
+    }
+  }, [catId, favouritesCats, pathname]);
 
   return (
     <button

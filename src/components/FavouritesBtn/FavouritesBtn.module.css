@@ -27,7 +27,8 @@
   background-color: var(--white-color);
   border: none;
   border-radius: var(--border-radius-small);
-  transition: background-color 250ms var(--timing-function);
+  transition: background-color 250ms var(--timing-function),
+    opacity 250ms var(--timing-function);
 }
 
 .button.reuse:hover {

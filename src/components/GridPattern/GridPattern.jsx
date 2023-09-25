@@ -62,17 +62,7 @@ export default function GridPattern({ cats, deleteFromFavourites, addLog }) {
                 sizes="380px"
               />
             </div>
-            <button
-              className={`${styles.button} ${styles.active}}`}
-              type="button"
-              name="Favourites"
-              onClick={(e) => {
-                deleteFromFavourites(id);
-                addLog(image.id, `was removed from ${e.currentTarget.name}`);
-              }}
-            >
-              <Unfav className={`${styles.icon} ${styles.unfav}`} />
-            </button>
+            <FavouritesBtn catId={id} addLog={addLog} />
           </li>
         ))}
 
