@@ -6,6 +6,10 @@
   gap: 20px;
 }
 
+.list.favourites {
+  margin-bottom: 20px;
+}
+
 .item {
   position: relative;
   border-radius: var(--border-radius-large);

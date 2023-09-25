@@ -20,7 +20,7 @@ export default function GridPattern({
   }
 
   return (
-    <ul className={styles.list}>
+    <ul className={`${styles.list} ${styles.favourites}`}>
       {(pathname === "/breeds" || pathname === "/search") &&
         cats.map(({ url, id, breeds }) => (
           <li className={styles.item} key={id}>
