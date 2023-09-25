@@ -5,28 +5,17 @@ import Unfav from "public/images/svg/unfav.svg";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function FavouritesBtn({ catId, addLog }) {
+export default function FavouritesBtn({
+  catId,
+  favouritesCats,
+  addToFavourites,
+  deleteFromFavourites,
+  addLog,
+}) {
   const pathname = usePathname();
   const reuse = pathname === "/gallery" || pathname === "/favourites";
   const [isFavourites, setIsFavourites] = useState(false);
   const [catForDelete, setCatForDelete] = useState(null);
-  // let isFavourites = [];
-  // let catForDelete;
-
-  const {
-    favouritesCats,
-    fetchFavourites,
-    addToFavourites,
-    deleteFromFavourites,
-  } = useFavourites();
-
-  useEffect(() => {
-    async function loadFavourites() {
-      await fetchFavourites();
-    }
-
-    loadFavourites();
-  }, [fetchFavourites]);
 
   useEffect(() => {
     if (pathname === "/favourites") {

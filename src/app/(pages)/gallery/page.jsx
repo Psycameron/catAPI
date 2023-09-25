@@ -4,6 +4,7 @@ import GalleryForm from "@/components/GalleryForm/GalleryForm";
 import GridPattern from "@/components/GridPattern/GridPattern";
 import Loader from "@/components/Loader/Loader";
 import useBreeds from "@/hooks/useBreeds";
+import useFavourites from "@/hooks/useFavourites";
 import useLogs from "@/hooks/useLogs";
 import { getCatsForGallery, getCatsWithBreed } from "@/utils/api";
 import { useEffect, useState } from "react";
@@ -11,6 +12,8 @@ import { useEffect, useState } from "react";
 export default function Gallery() {
   const { breeds, allBreedIds } = useBreeds();
   const { logs, addLog } = useLogs();
+  const { favouritesCats, addToFavourites, deleteFromFavourites } =
+    useFavourites();
 
   const [cats, setCats] = useState(null);
 
@@ -115,7 +118,17 @@ export default function Gallery() {
         handleSubmit={handleSubmit}
         handleKeyPress={handleKeyPress}
       />
-      {isLoading ? <Loader /> : <GridPattern cats={cats} addLog={addLog} />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <GridPattern
+          cats={cats}
+          addLog={addLog}
+          favouritesCats={favouritesCats}
+          addToFavourites={addToFavourites}
+          deleteFromFavourites={deleteFromFavourites}
+        />
+      )}
     </>
   );
 }

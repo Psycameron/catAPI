@@ -6,7 +6,13 @@ import styles from "./GridPattern.module.css";
 import Unfav from "public/images/svg/unfav.svg";
 import FavouritesBtn from "../FavouritesBtn/FavouritesBtn";
 
-export default function GridPattern({ cats, deleteFromFavourites, addLog }) {
+export default function GridPattern({
+  cats,
+  addToFavourites,
+  deleteFromFavourites,
+  favouritesCats,
+  addLog,
+}) {
   const pathname = usePathname();
 
   if (!cats) {
@@ -46,7 +52,13 @@ export default function GridPattern({ cats, deleteFromFavourites, addLog }) {
                 sizes="380px"
               />
             </div>
-            <FavouritesBtn catId={id} addLog={addLog} />
+            <FavouritesBtn
+              catId={id}
+              addLog={addLog}
+              favouritesCats={favouritesCats}
+              addToFavourites={addToFavourites}
+              deleteFromFavourites={deleteFromFavourites}
+            />
           </li>
         ))}
 
@@ -62,7 +74,12 @@ export default function GridPattern({ cats, deleteFromFavourites, addLog }) {
                 sizes="380px"
               />
             </div>
-            <FavouritesBtn catId={id} addLog={addLog} />
+            <FavouritesBtn
+              catId={id}
+              addLog={addLog}
+              favouritesCats={cats}
+              deleteFromFavourites={deleteFromFavourites}
+            />
           </li>
         ))}
 
