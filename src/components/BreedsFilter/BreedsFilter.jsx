@@ -20,7 +20,7 @@ export default function BreedsFilter({
         className={`${styles.select} ${styles.breeds}`}
         name="breeds"
         id=""
-        value={selectedBreedId}
+        value={selectedBreedId || ""}
         onChange={handleSelectChange}
       >
         <option value={allBreedIds}>All breeds</option>

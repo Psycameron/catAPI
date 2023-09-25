@@ -77,7 +77,7 @@ export default function GalleryForm({
             className={styles.select}
             name="breeds"
             idr="breeds"
-            value={selectedBreedId}
+            value={selectedBreedId || ""}
             onChange={handleSelectChange}
           >
             <option value={allBreedIds}>All breeds</option>
