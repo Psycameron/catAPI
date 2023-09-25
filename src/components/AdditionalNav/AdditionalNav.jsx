@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import styles from "./AdditionalNav.module.css";
 import Like from "public/images/svg/like.svg";
 import Fav from "public/images/svg/fav.svg";
 import Dislike from "public/images/svg/dislike.svg";
+import styles from "./AdditionalNav.module.css";
 
 export default function AdditionalNav() {
   const pathname = usePathname();

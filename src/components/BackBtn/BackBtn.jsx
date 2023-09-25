@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation";
 
-import styles from "./BackBtn.module.css";
 import Back from "public/images/svg/back.svg";
+import styles from "./BackBtn.module.css";
 
 function BackButton() {
   const router = useRouter();

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import useBreeds from "@/hooks/useBreeds";
 import { getCatsByBreed } from "@/utils/api";
+
+import useBreeds from "@/hooks/useBreeds";
 
 import BreedsFilter from "@/components/BreedsFilter/BreedsFilter";
 import GridPattern from "@/components/GridPattern/GridPattern";

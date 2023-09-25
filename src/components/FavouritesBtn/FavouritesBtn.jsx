@@ -1,9 +1,9 @@
-import useFavourites from "@/hooks/useFavourites";
-import styles from "./FavouritesBtn.module.css";
-import Fav from "public/images/svg/fav.svg";
-import Unfav from "public/images/svg/unfav.svg";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+import Fav from "public/images/svg/fav.svg";
+import Unfav from "public/images/svg/unfav.svg";
+import styles from "./FavouritesBtn.module.css";
 
 export default function FavouritesBtn({
   catId,

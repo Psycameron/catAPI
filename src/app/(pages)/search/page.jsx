@@ -1,10 +1,10 @@
 "use client";
 
-import GridPattern from "@/components/GridPattern/GridPattern";
 import { useSearch } from "@/contexts/searchContext";
 
-import styles from "./page.module.css";
+import GridPattern from "@/components/GridPattern/GridPattern";
 import NoItemsFound from "@/components/NoItemsFound/NoItemsFound";
+import styles from "./page.module.css";
 
 export default function Search() {
   const { query, cats } = useSearch();

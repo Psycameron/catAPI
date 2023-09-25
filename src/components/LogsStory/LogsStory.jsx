@@ -1,7 +1,7 @@
-import styles from "./LogsStory.module.css";
 import Like from "public/images/svg/like.svg";
 import Fav from "public/images/svg/fav.svg";
 import Dislike from "public/images/svg/dislike.svg";
+import styles from "./LogsStory.module.css";
 
 export default function LogsStory({ logs }) {
   if (logs.length === 0) {

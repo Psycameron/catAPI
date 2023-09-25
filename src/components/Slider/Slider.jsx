@@ -5,8 +5,8 @@ import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import styles from "./Slider.module.css";
 import "./custom-slider.css";
+import styles from "./Slider.module.css";
 
 export default function Slider({ images }) {
   return (

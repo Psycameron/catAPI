@@ -1,15 +1,15 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { addImageReaction, getRandomCat } from "@/utils/api";
+
 import useFavourites from "@/hooks/useFavourites";
 import useLogs from "@/hooks/useLogs";
-import Image from "next/image";
 
 import LogsStory from "@/components/LogsStory/LogsStory";
 import ReactionsMenu from "@/components/ReactionsMenu/ReactionsMenu";
-import { addImageReaction, getRandomCat } from "@/utils/api";
-
-import styles from "./page.module.css";
 import Loader from "@/components/Loader/Loader";
+import styles from "./page.module.css";
 
 export default function Voting() {
   const {

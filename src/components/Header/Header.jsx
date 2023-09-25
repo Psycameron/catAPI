@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 import Logo from "public/Logo.svg";
-
 import styles from "./Header.module.css";
 
 export default function Header() {

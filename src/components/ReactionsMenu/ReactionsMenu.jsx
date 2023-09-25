@@ -1,8 +1,8 @@
 import FavouritesBtn from "../FavouritesBtn/FavouritesBtn";
 
-import styles from "./ReactionsMenu.module.css";
 import Like from "public/images/svg/like.svg";
 import Dislike from "public/images/svg/dislike.svg";
+import styles from "./ReactionsMenu.module.css";
 
 const VALUE_FOR_LIKES = 1;
 const VALUE_FOR_DISLIKES = -1;

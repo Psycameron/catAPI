@@ -5,16 +5,15 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-
+import { useSearch } from "@/contexts/searchContext";
+import { useEffect } from "react";
 import { getCatsByBreed } from "@/utils/api";
+
 import AdditionalNav from "@/components/AdditionalNav/AdditionalNav";
 import BackBtn from "@/components/BackBtn/BackBtn";
 import SearchForm from "@/components/SearchForm/SearchForm";
-
-import styles from "./layout.module.css";
 import Paper from "@/components/Paper/Paper";
-import { useSearch } from "@/contexts/searchContext";
-import { useEffect } from "react";
+import styles from "./layout.module.css";
 
 const LIMIT = 10;
 

@@ -1,10 +1,9 @@
 import { Jost } from "next/font/google";
+import SearchProvider from "@/contexts/searchContext";
 
 import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
-
 import "./globals.css";
-import SearchProvider from "@/contexts/searchContext";
 
 const jost = Jost({ subsets: ["latin"] });
 

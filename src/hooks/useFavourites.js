@@ -1,9 +1,9 @@
+import { useCallback, useState } from "react";
 import {
   addCatToFavourites,
   deleteCatFromFavourites,
   getFavourites,
 } from "@/utils/api";
-import { useCallback, useState } from "react";
 
 export default function useFavourites() {
   const [favouritesCats, setFavouritesCats] = useState([]);

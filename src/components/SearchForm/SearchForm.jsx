@@ -1,12 +1,9 @@
 "use client";
-
-import Link from "next/link";
-
-import styles from "./SearchForm.module.css";
-import SearchIcon from "public/images/svg/search.svg";
-
 import { useSearch } from "@/contexts/searchContext";
 import { useRouter } from "next/navigation";
+
+import SearchIcon from "public/images/svg/search.svg";
+import styles from "./SearchForm.module.css";
 
 export default function SearchForm({ handleSubmit, handleChange }) {
   const router = useRouter();

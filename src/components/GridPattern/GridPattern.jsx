@@ -1,10 +1,9 @@
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import styles from "./GridPattern.module.css";
-import Unfav from "public/images/svg/unfav.svg";
 import FavouritesBtn from "../FavouritesBtn/FavouritesBtn";
+import styles from "./GridPattern.module.css";
 
 export default function GridPattern({
   cats,

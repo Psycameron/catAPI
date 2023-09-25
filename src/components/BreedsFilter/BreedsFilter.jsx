@@ -1,8 +1,8 @@
 "use client";
 
-import styles from "./BreedsFilter.module.css";
 import Sort from "public/images/svg/sort.svg";
 import SortRevert from "public/images/svg/sort-revert.svg";
+import styles from "./BreedsFilter.module.css";
 
 const LIMITS_VALUE = [5, 10, 15, 20];
 

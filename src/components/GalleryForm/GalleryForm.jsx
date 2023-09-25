@@ -1,5 +1,5 @@
-import styles from "./GalleryForm.module.css";
 import Update from "public/images/svg/update.svg";
+import styles from "./GalleryForm.module.css";
 
 const ORDER_VALUE = ["Random", "Desc", "Asc"];
 const TYPE_VALUE = [

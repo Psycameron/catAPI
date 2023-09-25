@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { getCatInfoByBreed, getCatsByBreed } from "@/utils/api";
 
-import styles from "./page.module.css";
 import Slider from "@/components/Slider/Slider";
 import Loader from "@/components/Loader/Loader";
+import styles from "./page.module.css";
 
 const LIMIT_SLIDER_IMAGES = 5;
 
@@ -13,7 +13,6 @@ export default function PetInfo({ params: { id } }) {
   const [breedInfo, setBreedInfo] = useState(null);
   const [breedImages, setBreedImages] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(`🚀 ~ PetInfo ~ isLoading:`, isLoading);
 
   useEffect(() => {
     setIsLoading(true);

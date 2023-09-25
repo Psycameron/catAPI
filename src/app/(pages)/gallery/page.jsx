@@ -1,17 +1,19 @@
 "use client";
 
-import GalleryForm from "@/components/GalleryForm/GalleryForm";
-import GridPattern from "@/components/GridPattern/GridPattern";
-import Loader from "@/components/Loader/Loader";
+import { useEffect, useState } from "react";
+import { getCatsForGallery, getCatsWithBreed } from "@/utils/api";
+
 import useBreeds from "@/hooks/useBreeds";
 import useFavourites from "@/hooks/useFavourites";
 import useLogs from "@/hooks/useLogs";
-import { getCatsForGallery, getCatsWithBreed } from "@/utils/api";
-import { useEffect, useState } from "react";
+
+import GalleryForm from "@/components/GalleryForm/GalleryForm";
+import GridPattern from "@/components/GridPattern/GridPattern";
+import Loader from "@/components/Loader/Loader";
 
 export default function Gallery() {
   const { breeds, allBreedIds } = useBreeds();
-  const { logs, addLog } = useLogs();
+  const { addLog } = useLogs();
   const { favouritesCats, addToFavourites, deleteFromFavourites } =
     useFavourites();
 

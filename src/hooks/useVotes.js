@@ -1,5 +1,5 @@
-import { getAllVotes } from "@/utils/api";
 import { useCallback, useState } from "react";
+import { getAllVotes } from "@/utils/api";
 
 export default function useVotes() {
   const [likesCats, setLikesCats] = useState([]);

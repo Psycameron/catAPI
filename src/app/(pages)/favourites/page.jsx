@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
 import useFavourites from "@/hooks/useFavourites";
 import useLogs from "@/hooks/useLogs";
 
