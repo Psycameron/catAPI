@@ -25,8 +25,9 @@ export default function PagesLayout({ children }) {
   useEffect(() => {
     if (pathname !== "/search") {
       setQuery("");
+      setCats(null);
     }
-  }, [pathname, setQuery]);
+  }, [pathname, setCats, setQuery]);
 
   function handleChange(e) {
     setQuery(e.currentTarget.value);

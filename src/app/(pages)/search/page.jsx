@@ -15,13 +15,13 @@ export default function Search() {
 
   return (
     <>
+      <p className={styles.p}>
+        Search results for: <span className={styles.span}>{query}</span>
+      </p>
       {cats.length === 0 ? (
         <NoItemsFound />
       ) : (
         <div>
-          <p className={styles.p}>
-            Search results for: <span className={styles.span}>{query}</span>
-          </p>
           <GridPattern cats={cats} />
         </div>
       )}
