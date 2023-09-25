@@ -12,7 +12,12 @@ import styles from "./page.module.css";
 import Loader from "@/components/Loader/Loader";
 
 export default function Voting() {
-  const { fetchFavourites } = useFavourites();
+  const {
+    favouritesCats,
+    fetchFavourites,
+    addToFavourites,
+    deleteFromFavourites,
+  } = useFavourites();
   const { logs, addLog } = useLogs();
 
   const [catInfo, setCatInfo] = useState(null);
@@ -25,7 +30,6 @@ export default function Voting() {
       setCatInfo(data);
       setIsLoading(false);
     }
-
     fetchFavourites();
     fetchCat();
   }, [fetchFavourites]);
@@ -68,6 +72,9 @@ export default function Voting() {
       <ReactionsMenu
         catId={catInfo.id}
         handleReaction={handleReaction}
+        favouritesCats={favouritesCats}
+        addToFavourites={addToFavourites}
+        deleteFromFavourites={deleteFromFavourites}
         addLog={addLog}
       />
       <LogsStory logs={logs} />

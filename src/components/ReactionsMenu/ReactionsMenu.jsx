@@ -7,7 +7,14 @@ import Dislike from "public/images/svg/dislike.svg";
 const VALUE_FOR_LIKES = 1;
 const VALUE_FOR_DISLIKES = -1;
 
-export default function ReactionsMenu({ catId, handleReaction, addLog }) {
+export default function ReactionsMenu({
+  catId,
+  handleReaction,
+  favouritesCats,
+  addToFavourites,
+  deleteFromFavourites,
+  addLog,
+}) {
   return (
     <div className={styles.wrapper}>
       <button
@@ -22,7 +29,13 @@ export default function ReactionsMenu({ catId, handleReaction, addLog }) {
         <Like className={styles.icon} />
       </button>
 
-      <FavouritesBtn catId={catId} addLog={addLog} />
+      <FavouritesBtn
+        catId={catId}
+        favouritesCats={favouritesCats}
+        addToFavourites={addToFavourites}
+        deleteFromFavourites={deleteFromFavourites}
+        addLog={addLog}
+      />
 
       <button
         className={`${styles.button} ${styles.dislike}`}
