@@ -37,6 +37,11 @@
   --line-height-main: 1.5;
   --line-height-small: 1.33;
 
+  /* Viewport width */
+  --desktop: 1200px;
+  --tablet: 786px;
+  --mobile: 375px;
+
   /* Transition */
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -111,4 +116,7 @@ button {
   font-size: inherit;
   color: inherit;
   cursor: pointer;
+}
+
+.header {
 }
