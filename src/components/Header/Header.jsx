@@ -12,7 +12,7 @@ export default function Header() {
         <Logo className={styles.logo} />
       </Link>
       <h1 className={styles.title}>Hi! &#128075;</h1>
-      <p className={styles.descr}>Welcome to MacPaw Bootcamp 2023</p>
+      <p className={styles.descr}>Welcome to the cat photo app</p>
     </>
   );
 }
