@@ -67,7 +67,7 @@ export default function PetInfo({ params: { id } }) {
             </li>
             <li className={styles.item}>
               <span className={styles.category}>Weight: </span>
-              <span className={styles.span}>{weight.metric}</span>
+              <span className={styles.span}>{weight?.metric}</span>
             </li>
             <li className={styles.item}>
               <span className={styles.category}>Life span: </span>
