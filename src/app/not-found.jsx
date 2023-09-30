@@ -1,15 +1,13 @@
-import Link from "next/link";
-
-// import notFound from "/public/images/asdasd.webp";
-// import Image from "next/image";
+import notFound from "/public/images/new.webp";
+import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <div>
-      <h2>Not Found</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
-      {/* <Image src={notFound} alt="not found cat" width={300} height={300} /> */}
-    </div>
+    <main>
+      <h2>404</h2>
+      <p>Oops... Page not found</p>
+
+      <Image src={notFound} alt="not found cat" width={300} height={300} />
+    </main>
   );
 }
