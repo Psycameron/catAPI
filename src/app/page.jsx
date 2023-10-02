@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <Paper color="custom">
         <Image
           className={styles.image}
