@@ -35,7 +35,7 @@ export default function Navbar() {
               pathname === "/voting" ? `${styles.active}` : ""
             }`}
           >
-            VOTING
+            Banana
           </p>
         </Link>
         <Link className={styles.link} href="/breeds">
@@ -58,7 +58,7 @@ export default function Navbar() {
               pathname === "/breeds" ? `${styles.active}` : ""
             }`}
           >
-            BREEDS
+            Tomato
           </p>
         </Link>
         <Link className={styles.link} href="/gallery">
