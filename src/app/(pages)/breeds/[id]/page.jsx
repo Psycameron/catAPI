@@ -55,7 +55,7 @@ export default function PetInfo({ params: { id } }) {
       <div className={styles.container}>
         <h4 className={styles.name}>{name}</h4>
         <p className={styles.descr}>{description}</p>
-        <ul className={styles.list}>
+        <ul className={styles.params}>
           <li className={`${styles.item} ${styles.temperament}`}>
             <span className={styles.category}>Temperament: </span>
             <span className={styles.span}>{temperament}</span>

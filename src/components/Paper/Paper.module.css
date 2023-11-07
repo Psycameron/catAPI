@@ -1,13 +1,17 @@
 .container {
   position: relative;
 
+  max-width: 680px;
+  min-height: calc(100vh - 130px);
   padding: 20px;
   margin-bottom: 30px;
-  width: 680px;
-  min-height: calc(100vh - 130px);
 
   background-color: var(--white-color);
   border-radius: var(--border-radius-large);
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 20px;
+  }
 }
 
 .customBackground {

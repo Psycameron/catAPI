@@ -56,7 +56,7 @@ export default function PagesLayout({ children }) {
   }
 
   return (
-    <section>
+    <section className={styles.section}>
       <div className={styles.navWrapper}>
         <SearchForm handleSubmit={handleSubmit} handleChange={handleChange} />
         <AdditionalNav />
