@@ -57,9 +57,7 @@ body {
   position: relative;
   justify-content: center;
 
-  padding-top: 30px;
-  padding-right: 30px;
-  /* padding-left: 147px; */
+  padding: 30px;
 
   font-size: var(--font-size-main);
   line-height: var(--line-height-main);
@@ -89,7 +87,7 @@ header {
   top: 30px;
   left: 0;
 
-  height: calc(100vh - 30px);
+  height: calc(100vh - 60px);
   margin-right: 137px;
 }
 

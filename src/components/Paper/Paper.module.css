@@ -1,19 +1,19 @@
 .container {
   position: relative;
 
-  max-width: 680px;
+  width: 100%;
   min-height: calc(100vh - 130px);
   padding: 20px;
-  margin-bottom: 30px;
 
   background-color: var(--white-color);
   border-radius: var(--border-radius-large);
 
   @media screen and (min-width: 1440px) {
-    margin-bottom: 20px;
+    width: 680px;
   }
 }
 
 .customBackground {
   background-color: var(--primary-muted);
+  min-height: calc(100vh - 60px);
 }
