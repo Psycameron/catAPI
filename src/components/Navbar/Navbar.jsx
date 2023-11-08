@@ -8,9 +8,12 @@ import voteTable from "/public/images/vote-table.png";
 import petBreeds from "/public/images/pet-breeds.png";
 import imageSearch from "/public/images/images-search.png";
 import styles from "./Navbar.module.css";
+import useWindowSize from "@/hooks/useWindowSize";
 
 export default function Navbar() {
   const pathname = usePathname();
+
+  const { width } = useWindowSize();
 
   return (
     <>
@@ -52,7 +55,6 @@ export default function Navbar() {
               height={163}
             />
           </div>
-
           <p
             className={`${styles.p} ${
               pathname === "/breeds" ? `${styles.active}` : ""
