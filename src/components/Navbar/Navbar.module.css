@@ -6,9 +6,9 @@
   display: flex;
   gap: 16px;
 
-  @media screen and (max-width: 768px) {
+  /* @media screen and (max-width: 768px) {
     flex-direction: column;
-  }
+  } */
 }
 
 .link {
@@ -33,9 +33,9 @@
 
   transition: border 250ms var(--timing-function);
 
-  @media screen and (max-width: 786px) {
+  /* @media screen and (max-width: 786px) {
     display: none;
-  }
+  } */
 }
 
 .wrapper.active {

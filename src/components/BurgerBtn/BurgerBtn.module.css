@@ -9,7 +9,7 @@
   fill: var(--primary);
 }
 
-@media (max-width: var(--desktop)) {
+/* @media (max-width: var(--desktop)) {
   .button {
     display: block;
 
@@ -19,4 +19,4 @@
     background-color: var(--white-color);
     border-radius: var(--border-radius-large);
   }
-}
+} */

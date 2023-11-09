@@ -1,15 +1,15 @@
 .imageContainer {
   position: relative;
 
-  width: 295px;
-  height: 167px;
+  width: 640px;
+  height: 360px;
 
   margin-bottom: 50px;
 
-  @media screen and (min-width: 1400px) {
+  /* @media screen and (min-width: 1400px) {
     width: 640px;
     height: 360px;
-  }
+  } */
 }
 
 .container {
@@ -17,10 +17,6 @@
 
   border-radius: var(--border-radius-large);
   border: 2px solid var(--primary-muted);
-
-  @media screen and (min-width: 1400px) {
-    padding: 40px;
-  }
 }
 
 .name {
