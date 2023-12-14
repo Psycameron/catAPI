@@ -57,10 +57,10 @@ export default function PagesLayout({ children }) {
 
   return (
     <section className={styles.section}>
-      <div className={styles.navWrapper}>
+      {/* <div className={styles.navWrapper}>
         <SearchForm handleSubmit={handleSubmit} handleChange={handleChange} />
         <AdditionalNav />
-      </div>
+      </div> */}
       <Paper>
         <div className={styles.innerWrapper}>
           <BackBtn />
@@ -69,9 +69,9 @@ export default function PagesLayout({ children }) {
               <h2 className={`${styles.title} ${styles.titleNotActive}`}>
                 {pathname.slice(1, 7).toUpperCase()}
               </h2>
-              {/* <h2 className={styles.title}>
+              <h2 className={styles.title}>
                 {pathname.replace("/breeds/", "").toUpperCase()}
-              </h2> */}
+              </h2>
             </>
           ) : (
             <h2 className={styles.title}>
